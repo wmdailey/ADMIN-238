@@ -1,0 +1,28 @@
+# Exercise 06-10
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web07-deploy
+  labels:
+    app: webapp-dev 
+    name: web07-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: web07-pod
+  template:
+    metadata:
+      labels:
+        name: web07-pod
+    spec:
+      containers:
+      - name: web-app
+        image: nginx:1.28.0
+        ports:
+          - containerPort: 80
+
+
+

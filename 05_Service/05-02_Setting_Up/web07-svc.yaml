@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web07-svc 
+  labels:
+    app: webapp-dev
+    svc: web07-svc
+spec:
+  selector:
+    name: web07-pod 
+  type: NodePort
+  ports:
+    - name: web07-port
+      # The port that the service will expose
+      nodePort: 30080
+      port: 80
+      #targetPort: 80
+
+
