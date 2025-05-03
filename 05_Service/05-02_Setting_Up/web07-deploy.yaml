@@ -1,4 +1,4 @@
-# Exercise 06-10
+# Exercise 05-02 v1.0.0
 #
 ---
 apiVersion: apps/v1
@@ -23,6 +23,3 @@ spec:
         image: nginx:1.28.0
         ports:
           - containerPort: 80
-
-
-
