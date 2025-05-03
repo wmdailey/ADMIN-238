@@ -1,4 +1,4 @@
-# Exercise 09-02
+# Exercise 06-02
 # YAML Syntax
 #
 ---
@@ -22,3 +22,5 @@ spec:
      - 'sh'
      - '-c' 
      - "while true; do echo sync logs; sleep 20; done"
+
+     
