@@ -1,13 +1,13 @@
-# Exercise 06-05 v1.0.0
+# Exercise 04-06 v1.0.0
 #
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web02-pod
+  name: web01-pod
   namespace: default
   labels:
-    bu: fin
+    bu: sam
     env: prod
     tier: frontend
 spec:

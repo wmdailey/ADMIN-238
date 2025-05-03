@@ -1,14 +1,15 @@
-# Exercise: 06-2 v1.0.0
+# Exercise: 04-04 v1.0.0
 #
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web02-pod
-  namespace: app02-ns
+  name: web01-pod
 spec:
   containers:
   - name: web-app
-    image: nginx:1.27.5-alpine
+    image: nginx
     ports:
     - containerPort: 80
+
+

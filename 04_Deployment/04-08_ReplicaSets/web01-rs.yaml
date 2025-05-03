@@ -1,4 +1,4 @@
-# Exercise 06-07
+# Exercise 04-08 v1.0.0 
 #
 ---
 apiVersion: apps/v1
@@ -20,7 +20,3 @@ spec:
       containers:
         - name: web-app
           image: nginx:1.25.0-alpine 
-
-
-
-
