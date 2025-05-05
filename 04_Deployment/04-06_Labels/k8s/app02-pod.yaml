@@ -12,7 +12,7 @@ metadata:
     tier: mid
 spec:
   containers:
-  - name: busybox
+  - name: busy-app
     image: busybox
     command:
     - sleep

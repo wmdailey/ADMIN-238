@@ -19,7 +19,10 @@ spec:
         app: prdsam
     spec:
       containers:
-      - name: app-app 
+      - name: busy-app 
         image: busybox:1.28
         command: ["printenv"] 
         args: ["HOSTNAME", "KUBERNETES_PORT"]
+      restartPolicy: OnFailure
+
+

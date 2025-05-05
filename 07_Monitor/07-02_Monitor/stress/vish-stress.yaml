@@ -10,11 +10,11 @@ spec:
   containers:
   - name: node-stress 
     image: vish/stress
+    args:
+    - -cpus
+    - "1"
     resources:
       limits:
         cpu: "0.395"
       requests:
         cpu: "0.35"
-    args:
-    - -cpus
-    - "1"

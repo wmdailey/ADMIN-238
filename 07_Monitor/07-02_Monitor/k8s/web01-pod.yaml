@@ -8,18 +8,18 @@ metadata:
   namespace: default
 spec:
   containers:
-  - args:
+  - name: mem-stress
+    image: polinux/stress
+    imagePullPolicy: Always
+    command:
+    - stress
+    args:
     - --vm
     - "1"
     - --vm-bytes
     - 250M
     - --vm-hang
     - "1"
-    command:
-    - stress
-    image: polinux/stress
-    imagePullPolicy: Always
-    name: mem-stress
     resources:
       limits:
         memory: 300Mi

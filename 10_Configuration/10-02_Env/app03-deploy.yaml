@@ -4,25 +4,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app02-deploy 
+  name: app03-deploy 
   labels:
     app: store-app 
 spec:
   replicas: 2  
   selector:
     matchLabels:
-      pod: app02-pod 
+      pod: app03-pod 
   template:
     metadata:
       labels:
-        pod: app02-pod 
+        pod: app03-pod 
         app: prdsam
     spec:
       containers:
-      - name: app-app 
+      - name: busy-app 
         image: busybox:1.28
         env:
           - name: MESSAGE
             value: "Foo goes to a bar"
         command: ["/bin/echo"] 
         args: ["$(MESSAGE)"]
+
+
+        

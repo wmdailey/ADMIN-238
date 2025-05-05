@@ -19,6 +19,8 @@ spec:
         app: prdsam
     spec:
       containers:
-      - name: app-app 
+      - name: busy-app 
         image: busybox:1.28
-        command: ["sh", "-c", "echo Hello Kubernetes! && sleep 3600"] 
+        command: ["/bin/sh"] 
+        args: ["-c", "echo Hello from Kubernetes! && sleep 3600"] 
+

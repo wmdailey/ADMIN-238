@@ -18,8 +18,8 @@ spec:
         pod: web07-pod 
     spec:
       containers:
-        - image: nginx:1.24 
-          name: web-app 
+        - name: web-app 
+          image: nginx:1.24 
           ports:
           - protocol: TCP
             containerPort: 8080

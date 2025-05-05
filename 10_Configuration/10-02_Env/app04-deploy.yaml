@@ -4,7 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app02-deploy 
+  name: app04-deploy 
   labels:
     app: store-app 
 spec:
@@ -19,14 +19,13 @@ spec:
         app: prdsam
     spec:
       containers:
-      - name: app-app 
+      - name: busy-app 
         image: busybox:1.28
-        env:
-          - name: MESSAGE
-            value: "Foo goes to a bar"
-        command: ["env"] 
         env:
           - name: DEMO_VAR
             value: "Environmental variable demo"
           - name: DEBUG_MODE
             value: "true"
+        command: ["env"] 
+
+
