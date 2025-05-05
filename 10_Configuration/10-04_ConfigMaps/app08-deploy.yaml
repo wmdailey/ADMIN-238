@@ -1,0 +1,59 @@
+# Exercise 10-04 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app08-deploy 
+  labels:
+    app: store-app 
+spec:
+  replicas: 2  
+  selector:
+    matchLabels:
+      pod: app08-pod 
+  template:
+    metadata:
+      labels:
+        pod: app08-pod 
+    spec:
+      containers:
+      - name: app-app 
+        image: busybox:1.28
+        command: ["sh", "-c", "echo Hello Kubernetes! && sleep 3600"] 
+        env:
+          - name: END_USER
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: SERVICE_USER
+          - name: GROUPS 
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: GROUPS 
+          - name: ROLE 
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: ROLE 
+          - name: QOP 
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: QOP 
+          - name: STAT.INTERVAL 
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: STAT.INTERVAL 
+          - name: CHANNEL_ADDRESS 
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: CHANNEL_ADDRESS 
+          - name: REDUNANCY 
+            valueFrom:
+              configMapKeyRef:
+                name: app08-cm
+                key: REDUNANCY 
