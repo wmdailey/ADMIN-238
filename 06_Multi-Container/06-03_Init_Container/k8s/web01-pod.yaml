@@ -1,6 +1,5 @@
-# Exercise 09-02
+# Exercise 06-03
 # YAML Syntax
-#
 ---
 apiVersion: v1
 kind: Pod
