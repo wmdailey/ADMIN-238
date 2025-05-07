@@ -8,7 +8,7 @@
 # and "yes" for execution.
 
 # DEBUG
-set -x
+#set -x
 #set -eu
 #set >> /tmp/setvar.txt
 
@@ -40,7 +40,7 @@ then
     export CSR_CLIENT=$(cat ${CLIENT}.csr | base64 -w 0)
     
     #Create CSR object file
-    curl https://raw.githubusercontent.com/shamimice03/Kubernetes_RBAC/main/CertificateSigningRequest-Template.yaml | sed "s/<name>/${CLIENT}/ ; s/<csr-base64>/${CSR_CLIENT}/" > ${CLIENT}_csr.yaml
+    curl file:///$(pwd)/../user-csr.yaml | sed "s/<name>/${CLIENT}/ ; s/<csr-base64>/${CSR_CLIENT}/" > ${CLIENT}_csr.yaml
    
     #Create CSR object
     kubectl create -f ${CLIENT}_csr.yaml
@@ -64,7 +64,7 @@ then
     export NAMESPACE=$namespace
     
     #Configure kubeconfig file
-    curl https://raw.githubusercontent.com/shamimice03/Kubernetes_RBAC/main/kubeconfig-template.yaml | sed "s#<context>#${CONTEXT}# ;
+    curl file:///$(pwd)/../user-kubeconfig.yaml | sed "s#<context>#${CONTEXT}# ;
     s#<cluster-name>#${CONTEXT}# ;
     s#<ca.crt>#${CA_CRT}# ;
     s#<cluster-endpoint>#${CLUSTER_ENDPOINT}# ;
@@ -73,7 +73,9 @@ then
     s#<user.crt>#${CRT}# ; 
     s#<user.key>#${KEY}#" > config
 
+    echo
+    echo  "The configuration files are located in $name.\n" 
 else
-    echo -e "See you next time, Good Luck.\n" 
-    exit
+    echo
+    exit  "Next time."
 fi

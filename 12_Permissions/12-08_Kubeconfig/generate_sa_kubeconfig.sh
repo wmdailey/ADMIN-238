@@ -34,7 +34,10 @@ then
     
     #CA extraction from current kubeconfig file
     kubectl config view --raw -o jsonpath='{..cluster.certificate-authority-data}' | base64 --decode > ca.crt
-    
+
+    #Create a Service Account
+    kubectl create serviceaccount ${SA_NAME} --namespace $NAMESPACE 
+
     #Generate TOKEN for the Service Account 
     kubectl create token $SA_NAME --duration=60000s > token 
    
@@ -47,7 +50,7 @@ then
     export TOKEN=$(cat token)
     
     #Configure kubeconfig file
-    curl https://raw.githubusercontent.com/shamimice03/Kubernetes/main/Security/sa-kubeconfig-template.yaml | sed "s#<context>#${CONTEXT}# ;
+    curl file:///$(pwd)/../sa-kubeconfig.yaml | sed "s#<context>#${CONTEXT}# ;
     s#<cluster-name>#${CONTEXT}# ;
     s#<ca.crt>#${CA_CRT}# ;
     s#<cluster-endpoint>#${CLUSTER_ENDPOINT}# ;
@@ -55,7 +58,7 @@ then
     s#<namespace>#${NAMESPACE}# ;
     s#<token>#${TOKEN}#" > config
 
+    echo -e "The output files are located in $name.\n" 
 else
-    echo -e "See you next time, Good Luck.\n" 
-    exit
+    exit -e "Next time"
 fi
