@@ -15,10 +15,11 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: node-adm-crb 
+  namespace: prdfin-ns
 subjects:
-- kind: User
-  name: omar_ops 
-  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount 
+  name: fin01-sa 
+  namespace: prdfin-ns
 roleRef:
   kind: ClusterRole
   name: node-adm-cr

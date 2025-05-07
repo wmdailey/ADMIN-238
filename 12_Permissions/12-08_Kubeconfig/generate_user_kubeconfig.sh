@@ -74,6 +74,6 @@ then
     s#<user.key>#${KEY}#" > config
 
 else
-    echo -e "Kubeconfig file is ready.\n" 
+    echo -e "See you next time, Good Luck.\n" 
     exit
 fi

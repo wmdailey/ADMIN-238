@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Title: generate_kubeconfig.sh
+# Title: generate_sa_kubeconfig.sh
 # Author: Md Shamim 
 # Date: 15SEPT22
 # Purpose: This script is used to create a custom kubeconfig file for individual 
@@ -11,6 +11,8 @@
 set -x
 #set -eu
 #set >> /tmp/setvar.txt
+
+#!/bin/sh
 
 read -p 'Enter the ServiceAccount Name : ' name
 read -p 'Enter the Namespace Name: ' namespace
@@ -45,30 +47,7 @@ then
     export TOKEN=$(cat token)
     
     #Configure kubeconfig file
-    cat > sa-kubeconfig-template.yaml <<EOF  
-#kubeconfig file template
-apiVersion: v1
-kind: Config
-current-context: <context>
-clusters:
-- name: <cluster-name>
-  cluster:
-    certificate-authority-data: <ca.crt>
-    server: <cluster-endpoint>
-contexts:
-- name: <context>
-  context:
-    cluster: <cluster-name>
-    user: <user-name>
-    namespace: <namespace>
-users:
-- name: <user-name>
-  user:
-    client-certificate-data: <user.crt>
-    client-key-data: <user.key>
-EOF 
-
-    cat sa-kubeconfig-template.yaml | sed "s#<context>#${CONTEXT}# ;
+    curl https://raw.githubusercontent.com/shamimice03/Kubernetes/main/Security/sa-kubeconfig-template.yaml | sed "s#<context>#${CONTEXT}# ;
     s#<cluster-name>#${CONTEXT}# ;
     s#<ca.crt>#${CA_CRT}# ;
     s#<cluster-endpoint>#${CLUSTER_ENDPOINT}# ;
@@ -77,6 +56,6 @@ EOF
     s#<token>#${TOKEN}#" > config
 
 else
-    echo -e "File complete.\n" 
+    echo -e "See you next time, Good Luck.\n" 
     exit
 fi
