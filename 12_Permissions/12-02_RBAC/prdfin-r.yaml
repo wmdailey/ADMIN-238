@@ -4,8 +4,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: ops-group-role
-  namespace: prdfin
+  name: ops-adm-r
+  namespace: prdfin-ns
 rules:
 - apiGroups: [""]
   resources: ["*"]
@@ -18,8 +18,8 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: pod-reader
-  namespace: prdfin
+  name: read-pods-r
+  namespace: prdfin-ns
 rules:
 - apiGroups: [""] 
   resources: ["pods"]

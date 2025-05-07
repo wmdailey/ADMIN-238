@@ -1,16 +1,18 @@
-# Exercise 12-02 v1.0,0
-#Bind Role with a Group
+# Exercise 12-02 v1.0.0
+#
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: ops-group-binding
-  namespace: prdfin
+  name: read-pods-rb
+  namespace: prdfin-ns
 subjects:
-- kind: Group
-  name: ops
+- kind: User
+  name: dana_dev 
   apiGroup: rbac.authorization.k8s.io
 roleRef:
-  kind: Role
-  name: ops-group-role
+  kind: Role 
+  name: read-pods-r
   apiGroup: rbac.authorization.k8s.io
+
+

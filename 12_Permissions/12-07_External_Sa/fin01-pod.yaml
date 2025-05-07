@@ -1,0 +1,18 @@
+# Exercise 12-06 v1.0.0
+#
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fin01-pod
+  namespace: prdfin-ns
+spec:
+  serviceAccountName: fin01-sa
+  containers:
+  - image: shamimice03/kubectl-image  
+    name: fin01-pod
+    command:
+    - sleep
+    - "3600"
+---
+

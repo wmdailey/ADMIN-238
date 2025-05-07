@@ -1,0 +1,16 @@
+# Exercise 12-04 v1.0.0
+#
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: node-adm-crb 
+subjects:
+- kind: User
+  name: omar_ops 
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: node-adm-cr
+  apiGroup: rbac.authorization.k8s.io
+
