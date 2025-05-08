@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # Title: generate_kubeconfig.sh
 # Author: Md Shamim 
 # Date: 15SEPT22
 # Purpose: This script is used to create a custom kubeconfig file for individual 
-# users. The script requires an input of "username", "group name", "namesapce name", 
+# users. The script requires an input of "username", "group name", "namespace name", 
 # and "yes" for execution.
 
 # DEBUG
@@ -21,8 +21,11 @@ export CLIENT=$name
 export GROUP=$group
 export NAMESPACE=$namespace
 
-echo -e "\nUsername is: ${CLIENT}\nGroup Name is: ${GROUP}\nand Namespace is: ${NAMESPACE}"
-echo -e "\nIf you want to proceed with above informaton, type \"yes\" or \"no\": " 
+echo
+echo "Credentials and a kubeconfig will be created for:"
+echo -e  "  Username: ${CLIENT}\n  Group Name: ${GROUP}\n  Namespace: ${NAMESPACE}"
+echo
+echo -n "Proceed? \"yes\" or \"no\":  " 
 read value
 
 if [ $value == "yes" ]
@@ -74,8 +77,8 @@ then
     s#<user.key>#${KEY}#" > config
 
     echo
-    echo  "The configuration files are located in $name.\n" 
+    echo  "The credentials and kubeconfig file are located in $name." 
 else
-    echo
-    exit  "Next time."
+    echo "Next Time"
+    exit 
 fi

@@ -1,18 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
 # Title: generate_sa_kubeconfig.sh
 # Author: Md Shamim 
 # Date: 15SEPT22
-# Purpose: This script is used to create a custom kubeconfig file for individual 
-# users. The script requires an input of "username", "group name", "namesapce name", 
+# Modified: WKD
+# Date: 7APR25
+# Purpose: This script is used to create a custom kubeconfig file for Service 
+# Accounts. The script requires an input of "Service Account name" and "namespace name", 
 # and "yes" for execution.
 
 # DEBUG
-set -x
+#set -x
 #set -eu
 #set >> /tmp/setvar.txt
-
-#!/bin/sh
 
 read -p 'Enter the ServiceAccount Name : ' name
 read -p 'Enter the Namespace Name: ' namespace
@@ -20,8 +20,11 @@ read -p 'Enter the Namespace Name: ' namespace
 export SA_NAME=$name
 export NAMESPACE=$namespace
 
-echo -e "\nServiceAccount Name is: ${SA_NAME}\nand Namespace is: ${NAMESPACE}"
-echo -e "\nIf you want to proceed with above informaton, type \"yes\" or \"no\": " 
+echo
+echo "Credentials and kubeconfig will be created for:"
+echo -e "  ServiceAccount Name: ${SA_NAME}\n  Namespace: ${NAMESPACE}"
+echo
+echo -n  "Proceed? \"yes\" or \"no\":  " 
 read value
 
 if [ $value == "yes" ]
@@ -29,6 +32,14 @@ then
     mkdir ${SA_NAME}
     cd ${SA_NAME}
     
+    #Create a Service Account
+    kubectl get namespace ${NAMESPACE} 2>/dev/null
+    if [ $? -eq 1 ]; then 
+       kubectl create namespace $NAMESPACE 
+    else
+       echo
+    fi
+
     #Change context
     kubectl config set-context --current --namespace=$NAMESPACE
     
@@ -36,7 +47,12 @@ then
     kubectl config view --raw -o jsonpath='{..cluster.certificate-authority-data}' | base64 --decode > ca.crt
 
     #Create a Service Account
-    kubectl create serviceaccount ${SA_NAME} --namespace $NAMESPACE 
+    kubectl get serviceaccount ${SA_NAME} 2>/dev/null
+    if [ $? -eq 1 ]; then 
+       kubectl create serviceaccount ${SA_NAME} --namespace $NAMESPACE 
+    else
+       echo
+    fi
 
     #Generate TOKEN for the Service Account 
     kubectl create token $SA_NAME --duration=60000s > token 
@@ -58,7 +74,9 @@ then
     s#<namespace>#${NAMESPACE}# ;
     s#<token>#${TOKEN}#" > config
 
-    echo -e "The output files are located in $name.\n" 
+    echo
+    echo  "The credentials and kubeconfig file are located in $name." 
 else
-    exit -e "Next time"
+    echo "Next time"
+    exit 
 fi
