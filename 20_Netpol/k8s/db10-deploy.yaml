@@ -1,0 +1,51 @@
+# Exercise 19-02 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db10-deploy 
+  labels:
+    app: store-app 
+    tier: db
+spec:
+  selector:
+    matchLabels:
+      pod: db10-pod 
+  template:
+    metadata:
+      labels:
+        pod: db10-pod 
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest
+          env:
+            - name: "MYSQL_USER"
+              value: "mysql"
+            - name: "MYSQL_PASSWORD"
+              value: "BadPass@1"
+            - name: "MYSQL_DATABASE"
+              value: "store-db"
+            - name: "MYSQL_ROOT_PASSWORD"
+              value: "BadPass@1"
+          ports:
+            - name: http
+              containerPort: 3306
+              protocol: TCP
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db10-svc
+  labels:
+    app: store-app
+    tier: db
+spec:
+  selector:
+    pod: db01-pod 
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
