@@ -4,7 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: store01-deploy
+  name: store03-deploy
   labels:
     app: store-app 
     tier: appserver
@@ -12,11 +12,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: store01-pod
+      pod: store03-pod
   template:
     metadata:
       labels:
-        app: store01-pod
+        pod: store03-pod
     spec:
       containers:
         - name: web-app
@@ -30,13 +30,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: store01-svc
+  name: store03-svc
   labels:
     app: store-app
     tier: appserver
 spec:
   selector:
-    pod: store01-pod
+    pod: store03-pod
   ports:
     - protocol: TCP
       port: 8080
