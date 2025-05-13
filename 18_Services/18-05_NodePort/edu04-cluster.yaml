@@ -1,4 +1,4 @@
-# Exercise 16-04 v1.0.0
+# Exercise 18-05 v1.0.0
 #
 ---
 kind: Cluster
@@ -13,11 +13,8 @@ nodes:
       kubeletExtraArgs:
         node-labels: "ingress-ready=true"
   extraPortMappings:
-  - containerPort: 80
-    hostPort: 80
-    protocol: TCP
-  - containerPort: 443
-    hostPort: 443
+  - containerPort: 32323
+    hostPort: 32323 
     protocol: TCP
 - role: worker
 - role: worker
