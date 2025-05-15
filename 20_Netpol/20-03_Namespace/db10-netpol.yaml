@@ -11,17 +11,5 @@ spec:
     matchLabels:
       pod: db10-pod
   policyTypes:
-    - Ingress
     - Egress
-  ingress: 
-    - from:
-      - podSelector:
-          matchLabels:
-            pod: web10-pod
-        namespaceSelector:
-          matchLabels:
-            kubenetes.io/metadata.name: devstore-ns
-      ports:
-        - protocol: TCP
-          port: 6379
 

@@ -4,12 +4,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: web10-netpol
-  namespace: devstore-ns
+  name: db10-netpol
+  namespace: database-ns
 spec:
   podSelector:
     matchLabels:
-      pod: web10-pod
+      pod: db10-pod
   policyTypes:
     - Ingress
     - Egress
@@ -17,18 +17,10 @@ spec:
     - from:
       - podSelector:
           matchLabels:
-            pod: app10-pod
-      ports:
-        - protocol: TCP
-          port: 80 
-  egress:
-    - to:
-      - podSelector:
-          matchLabels: 
-            pod: db10-pod 
+            pod: web10-pod
         namespaceSelector:
           matchLabels:
-            kubernetes.io/metadata.name: database-ns
+            kubenetes.io/metadata.name: devstore-ns
       ports:
         - protocol: TCP
           port: 6379
