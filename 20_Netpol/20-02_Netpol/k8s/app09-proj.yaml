@@ -1,0 +1,46 @@
+# Exercise 20-02 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app09-deploy 
+  namespace: devstore-ns
+  labels:
+    app: store-app
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      pod: app09-pod
+  template:
+    metadata:
+      labels:
+        pod: app09-pod
+        tier: frontend
+    spec:
+      containers:
+        - name: store-app
+          image: node:21-alpine
+          command: ['sh', '-c', "sleep 3600"]
+          ports:
+          - containerPort: 3000
+          resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app09-svc
+  namespace: devstore-ns
+  labels:
+    app: store-app
+    tier: frontend
+spec:
+  type: ClusterIP 
+  selector:
+    pod: app09-pod
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

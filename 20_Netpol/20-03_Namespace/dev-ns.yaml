@@ -1,0 +1,12 @@
+# Exercise 19-04 v1.0.0
+#
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: devstore-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: database-ns
