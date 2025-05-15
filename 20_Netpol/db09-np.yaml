@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db09-np
+  namespace: prdstore-ns
+spec:
+  podSelector:
+    matchLabels:
+      pod: db09-pod
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress: 
+  - from:
+    - podSelector:
+        matchLabels:
+           pod: app09-pod
+    ports:
+    - protocol: TCP
+      port: 6379
+
