@@ -1,0 +1,23 @@
+# Exercise 20-03 v1.0.0
+#
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app10-netpol
+  namespace: devstore-ns
+spec:
+  podSelector:
+    matchLabels:
+      pod: app10-pod
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+      - podSelector:
+          matchLabels: 
+            pod: web10-pod 
+      ports:
+        - protocol: TCP
+          port: 80
+

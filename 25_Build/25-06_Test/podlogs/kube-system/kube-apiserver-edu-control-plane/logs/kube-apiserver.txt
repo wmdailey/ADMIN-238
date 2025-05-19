@@ -1,0 +1,218 @@
+W0518 12:04:47.167908       1 registry.go:256] calling componentGlobalsRegistry.AddFlags more than once, the registry will be set by the latest flags
+I0518 12:04:47.168138       1 options.go:238] external host was not specified, using 172.18.0.2
+I0518 12:04:47.170643       1 server.go:143] Version: v1.32.2
+I0518 12:04:47.170667       1 server.go:145] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+W0518 12:04:47.441119       1 logging.go:55] [core] [Channel #2 SubChannel #4]grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:2379", ServerName: "127.0.0.1:2379", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:2379: connect: connection refused"
+W0518 12:04:47.441174       1 logging.go:55] [core] [Channel #1 SubChannel #3]grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:2379", ServerName: "127.0.0.1:2379", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:2379: connect: connection refused"
+I0518 12:04:47.442148       1 shared_informer.go:313] Waiting for caches to sync for node_authorizer
+I0518 12:04:47.446094       1 shared_informer.go:313] Waiting for caches to sync for *generic.policySource[*k8s.io/api/admissionregistration/v1.ValidatingAdmissionPolicy,*k8s.io/api/admissionregistration/v1.ValidatingAdmissionPolicyBinding,k8s.io/apiserver/pkg/admission/plugin/policy/validating.Validator]
+I0518 12:04:47.449890       1 plugins.go:157] Loaded 13 mutating admission controller(s) successfully in the following order: NamespaceLifecycle,LimitRanger,ServiceAccount,NodeRestriction,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,RuntimeClass,DefaultIngressClass,MutatingAdmissionPolicy,MutatingAdmissionWebhook.
+I0518 12:04:47.449906       1 plugins.go:160] Loaded 13 validating admission controller(s) successfully in the following order: LimitRanger,ServiceAccount,PodSecurity,Priority,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,ClusterTrustBundleAttest,CertificateSubjectRestriction,ValidatingAdmissionPolicy,ValidatingAdmissionWebhook,ResourceQuota.
+I0518 12:04:47.450035       1 instance.go:233] Using reconciler: lease
+W0518 12:04:47.450589       1 logging.go:55] [core] [Channel #5 SubChannel #6]grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:2379", ServerName: "127.0.0.1:2379", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:2379: connect: connection refused"
+I0518 12:04:48.477234       1 handler.go:286] Adding GroupVersion apiextensions.k8s.io v1 to ResourceManager
+W0518 12:04:48.477253       1 genericapiserver.go:767] Skipping API apiextensions.k8s.io/v1beta1 because it has no resources.
+I0518 12:04:48.554312       1 handler.go:286] Adding GroupVersion  v1 to ResourceManager
+I0518 12:04:48.554454       1 apis.go:106] API group "internal.apiserver.k8s.io" is not enabled, skipping.
+I0518 12:04:48.622719       1 apis.go:106] API group "storagemigration.k8s.io" is not enabled, skipping.
+I0518 12:04:48.674689       1 apis.go:106] API group "resource.k8s.io" is not enabled, skipping.
+I0518 12:04:48.679529       1 handler.go:286] Adding GroupVersion authentication.k8s.io v1 to ResourceManager
+W0518 12:04:48.679542       1 genericapiserver.go:767] Skipping API authentication.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.679545       1 genericapiserver.go:767] Skipping API authentication.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.679706       1 handler.go:286] Adding GroupVersion authorization.k8s.io v1 to ResourceManager
+W0518 12:04:48.679712       1 genericapiserver.go:767] Skipping API authorization.k8s.io/v1beta1 because it has no resources.
+I0518 12:04:48.680022       1 handler.go:286] Adding GroupVersion autoscaling v2 to ResourceManager
+I0518 12:04:48.680309       1 handler.go:286] Adding GroupVersion autoscaling v1 to ResourceManager
+W0518 12:04:48.680315       1 genericapiserver.go:767] Skipping API autoscaling/v2beta1 because it has no resources.
+W0518 12:04:48.680318       1 genericapiserver.go:767] Skipping API autoscaling/v2beta2 because it has no resources.
+I0518 12:04:48.680761       1 handler.go:286] Adding GroupVersion batch v1 to ResourceManager
+W0518 12:04:48.680767       1 genericapiserver.go:767] Skipping API batch/v1beta1 because it has no resources.
+I0518 12:04:48.681080       1 handler.go:286] Adding GroupVersion certificates.k8s.io v1 to ResourceManager
+W0518 12:04:48.681086       1 genericapiserver.go:767] Skipping API certificates.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.681088       1 genericapiserver.go:767] Skipping API certificates.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.681961       1 handler.go:286] Adding GroupVersion coordination.k8s.io v1 to ResourceManager
+W0518 12:04:48.681972       1 genericapiserver.go:767] Skipping API coordination.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.681974       1 genericapiserver.go:767] Skipping API coordination.k8s.io/v1alpha2 because it has no resources.
+I0518 12:04:48.682177       1 handler.go:286] Adding GroupVersion discovery.k8s.io v1 to ResourceManager
+W0518 12:04:48.682183       1 genericapiserver.go:767] Skipping API discovery.k8s.io/v1beta1 because it has no resources.
+I0518 12:04:48.682645       1 handler.go:286] Adding GroupVersion networking.k8s.io v1 to ResourceManager
+W0518 12:04:48.682650       1 genericapiserver.go:767] Skipping API networking.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.682652       1 genericapiserver.go:767] Skipping API networking.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.682811       1 handler.go:286] Adding GroupVersion node.k8s.io v1 to ResourceManager
+W0518 12:04:48.682817       1 genericapiserver.go:767] Skipping API node.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.682819       1 genericapiserver.go:767] Skipping API node.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.683027       1 handler.go:286] Adding GroupVersion policy v1 to ResourceManager
+W0518 12:04:48.683033       1 genericapiserver.go:767] Skipping API policy/v1beta1 because it has no resources.
+I0518 12:04:48.683531       1 handler.go:286] Adding GroupVersion rbac.authorization.k8s.io v1 to ResourceManager
+W0518 12:04:48.683536       1 genericapiserver.go:767] Skipping API rbac.authorization.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.683538       1 genericapiserver.go:767] Skipping API rbac.authorization.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.684463       1 handler.go:286] Adding GroupVersion scheduling.k8s.io v1 to ResourceManager
+W0518 12:04:48.684470       1 genericapiserver.go:767] Skipping API scheduling.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.684472       1 genericapiserver.go:767] Skipping API scheduling.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.685047       1 handler.go:286] Adding GroupVersion storage.k8s.io v1 to ResourceManager
+W0518 12:04:48.685056       1 genericapiserver.go:767] Skipping API storage.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.685058       1 genericapiserver.go:767] Skipping API storage.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.688398       1 handler.go:286] Adding GroupVersion flowcontrol.apiserver.k8s.io v1 to ResourceManager
+W0518 12:04:48.688405       1 genericapiserver.go:767] Skipping API flowcontrol.apiserver.k8s.io/v1beta3 because it has no resources.
+W0518 12:04:48.688407       1 genericapiserver.go:767] Skipping API flowcontrol.apiserver.k8s.io/v1beta2 because it has no resources.
+W0518 12:04:48.688408       1 genericapiserver.go:767] Skipping API flowcontrol.apiserver.k8s.io/v1beta1 because it has no resources.
+I0518 12:04:48.695743       1 handler.go:286] Adding GroupVersion apps v1 to ResourceManager
+W0518 12:04:48.695754       1 genericapiserver.go:767] Skipping API apps/v1beta2 because it has no resources.
+W0518 12:04:48.695756       1 genericapiserver.go:767] Skipping API apps/v1beta1 because it has no resources.
+I0518 12:04:48.696508       1 handler.go:286] Adding GroupVersion admissionregistration.k8s.io v1 to ResourceManager
+W0518 12:04:48.696525       1 genericapiserver.go:767] Skipping API admissionregistration.k8s.io/v1beta1 because it has no resources.
+W0518 12:04:48.696528       1 genericapiserver.go:767] Skipping API admissionregistration.k8s.io/v1alpha1 because it has no resources.
+I0518 12:04:48.696733       1 handler.go:286] Adding GroupVersion events.k8s.io v1 to ResourceManager
+W0518 12:04:48.696743       1 genericapiserver.go:767] Skipping API events.k8s.io/v1beta1 because it has no resources.
+I0518 12:04:48.701099       1 handler.go:286] Adding GroupVersion apiregistration.k8s.io v1 to ResourceManager
+W0518 12:04:48.701107       1 genericapiserver.go:767] Skipping API apiregistration.k8s.io/v1beta1 because it has no resources.
+I0518 12:04:48.864567       1 secure_serving.go:213] Serving securely on [::]:6443
+I0518 12:04:48.864624       1 dynamic_cafile_content.go:161] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I0518 12:04:48.864672       1 dynamic_serving_content.go:135] "Starting controller" name="serving-cert::/etc/kubernetes/pki/apiserver.crt::/etc/kubernetes/pki/apiserver.key"
+I0518 12:04:48.865175       1 aggregator.go:169] waiting for initial CRD sync...
+I0518 12:04:48.865192       1 tlsconfig.go:243] "Starting DynamicServingCertificateController"
+I0518 12:04:48.865231       1 local_available_controller.go:156] Starting LocalAvailability controller
+I0518 12:04:48.865242       1 cache.go:32] Waiting for caches to sync for LocalAvailability controller
+I0518 12:04:48.865252       1 controller.go:80] Starting OpenAPI V3 AggregationController
+I0518 12:04:48.865267       1 gc_controller.go:78] Starting apiserver lease garbage collector
+I0518 12:04:48.865277       1 dynamic_serving_content.go:135] "Starting controller" name="aggregator-proxy-cert::/etc/kubernetes/pki/front-proxy-client.crt::/etc/kubernetes/pki/front-proxy-client.key"
+I0518 12:04:48.865291       1 customresource_discovery_controller.go:292] Starting DiscoveryController
+I0518 12:04:48.865311       1 controller.go:142] Starting OpenAPI controller
+I0518 12:04:48.865324       1 naming_controller.go:294] Starting NamingConditionController
+I0518 12:04:48.865335       1 apiapproval_controller.go:189] Starting KubernetesAPIApprovalPolicyConformantConditionController
+I0518 12:04:48.865342       1 crd_finalizer.go:269] Starting CRDFinalizer
+I0518 12:04:48.865314       1 system_namespaces_controller.go:66] Starting system namespaces controller
+I0518 12:04:48.865326       1 establishing_controller.go:81] Starting EstablishingController
+I0518 12:04:48.865346       1 controller.go:90] Starting OpenAPI V3 controller
+I0518 12:04:48.865331       1 nonstructuralschema_controller.go:195] Starting NonStructuralSchemaConditionController
+I0518 12:04:48.865394       1 apiservice_controller.go:100] Starting APIServiceRegistrationController
+I0518 12:04:48.865405       1 apf_controller.go:377] Starting API Priority and Fairness config controller
+I0518 12:04:48.865408       1 cache.go:32] Waiting for caches to sync for APIServiceRegistrationController controller
+I0518 12:04:48.865475       1 remote_available_controller.go:411] Starting RemoteAvailability controller
+I0518 12:04:48.865487       1 cache.go:32] Waiting for caches to sync for RemoteAvailability controller
+I0518 12:04:48.875122       1 dynamic_cafile_content.go:161] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I0518 12:04:48.875225       1 cluster_authentication_trust_controller.go:462] Starting cluster_authentication_trust_controller controller
+I0518 12:04:48.875251       1 shared_informer.go:313] Waiting for caches to sync for cluster_authentication_trust_controller
+I0518 12:04:48.875364       1 controller.go:119] Starting legacy_token_tracking_controller
+I0518 12:04:48.875373       1 shared_informer.go:313] Waiting for caches to sync for configmaps
+I0518 12:04:48.875232       1 crdregistration_controller.go:114] Starting crd-autoregister controller
+I0518 12:04:48.875439       1 shared_informer.go:313] Waiting for caches to sync for crd-autoregister
+I0518 12:04:48.875476       1 dynamic_cafile_content.go:161] "Starting controller" name="client-ca-bundle::/etc/kubernetes/pki/ca.crt"
+I0518 12:04:48.875548       1 dynamic_cafile_content.go:161] "Starting controller" name="request-header::/etc/kubernetes/pki/front-proxy-ca.crt"
+I0518 12:04:48.875609       1 controller.go:78] Starting OpenAPI AggregationController
+E0518 12:04:48.941219       1 controller.go:145] "Failed to ensure lease exists, will retry" err="namespaces \"kube-system\" not found" interval="200ms"
+I0518 12:04:48.943596       1 shared_informer.go:320] Caches are synced for node_authorizer
+I0518 12:04:48.947533       1 shared_informer.go:320] Caches are synced for *generic.policySource[*k8s.io/api/admissionregistration/v1.ValidatingAdmissionPolicy,*k8s.io/api/admissionregistration/v1.ValidatingAdmissionPolicyBinding,k8s.io/apiserver/pkg/admission/plugin/policy/validating.Validator]
+I0518 12:04:48.947543       1 policy_source.go:240] refreshing policies
+I0518 12:04:48.966503       1 cache.go:39] Caches are synced for RemoteAvailability controller
+I0518 12:04:48.966611       1 cache.go:39] Caches are synced for APIServiceRegistrationController controller
+I0518 12:04:48.966621       1 apf_controller.go:382] Running API Priority and Fairness config worker
+I0518 12:04:48.966627       1 apf_controller.go:385] Running API Priority and Fairness periodic rebalancing process
+I0518 12:04:48.966610       1 cache.go:39] Caches are synced for LocalAvailability controller
+I0518 12:04:48.966643       1 handler_discovery.go:451] Starting ResourceDiscoveryManager
+I0518 12:04:48.967257       1 controller.go:615] quota admission added evaluator for: namespaces
+I0518 12:04:48.975369       1 shared_informer.go:320] Caches are synced for cluster_authentication_trust_controller
+I0518 12:04:48.975930       1 shared_informer.go:320] Caches are synced for crd-autoregister
+I0518 12:04:48.975945       1 aggregator.go:171] initial CRD sync complete...
+I0518 12:04:48.975950       1 autoregister_controller.go:144] Starting autoregister controller
+I0518 12:04:48.975954       1 cache.go:32] Waiting for caches to sync for autoregister controller
+I0518 12:04:48.975957       1 cache.go:39] Caches are synced for autoregister controller
+I0518 12:04:48.976139       1 shared_informer.go:320] Caches are synced for configmaps
+I0518 12:04:49.145280       1 controller.go:615] quota admission added evaluator for: leases.coordination.k8s.io
+I0518 12:04:49.873735       1 storage_scheduling.go:95] created PriorityClass system-node-critical with value 2000001000
+I0518 12:04:49.880481       1 storage_scheduling.go:95] created PriorityClass system-cluster-critical with value 2000000000
+I0518 12:04:49.880509       1 storage_scheduling.go:111] all system priority classes are created successfully or already exist.
+I0518 12:04:50.009271       1 controller.go:615] quota admission added evaluator for: roles.rbac.authorization.k8s.io
+I0518 12:04:50.018697       1 controller.go:615] quota admission added evaluator for: rolebindings.rbac.authorization.k8s.io
+I0518 12:04:50.072571       1 alloc.go:330] "allocated clusterIPs" service="default/kubernetes" clusterIPs={"IPv4":"10.96.0.1"}
+W0518 12:04:50.076008       1 lease.go:265] Resetting endpoints for master service "kubernetes" to [172.18.0.2]
+I0518 12:04:50.076515       1 controller.go:615] quota admission added evaluator for: endpoints
+I0518 12:04:50.078172       1 controller.go:615] quota admission added evaluator for: endpointslices.discovery.k8s.io
+I0518 12:04:50.877495       1 controller.go:615] quota admission added evaluator for: serviceaccounts
+I0518 12:04:50.884859       1 controller.go:615] quota admission added evaluator for: deployments.apps
+I0518 12:04:50.888853       1 alloc.go:330] "allocated clusterIPs" service="kube-system/kube-dns" clusterIPs={"IPv4":"10.96.0.10"}
+I0518 12:04:50.893375       1 controller.go:615] quota admission added evaluator for: daemonsets.apps
+I0518 12:04:57.287891       1 controller.go:615] quota admission added evaluator for: controllerrevisions.apps
+I0518 12:04:58.184635       1 controller.go:615] quota admission added evaluator for: replicasets.apps
+E0518 12:20:09.103202       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:63450: use of closed network connection
+E0518 12:20:24.577215       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60160: use of closed network connection
+E0518 12:20:36.823387       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:65096: use of closed network connection
+E0518 12:21:47.644779       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60012: use of closed network connection
+E0518 12:21:52.986204       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:63330: use of closed network connection
+E0518 12:24:53.851033       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:59672: use of closed network connection
+I0518 12:25:27.514875       1 alloc.go:330] "allocated clusterIPs" service="default/clusterip-svc" clusterIPs={"IPv4":"10.96.129.124"}
+E0518 12:34:12.336941       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:55644: use of closed network connection
+E0518 12:50:31.626616       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60452: use of closed network connection
+E0518 13:08:47.749492       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:61696: use of closed network connection
+E0518 13:10:12.103837       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:63300: use of closed network connection
+E0518 13:10:21.317899       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:59974: use of closed network connection
+E0518 13:14:27.412865       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:62038: use of closed network connection
+E0518 13:14:33.744442       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:63236: use of closed network connection
+E0518 13:14:37.896280       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:63242: use of closed network connection
+E0518 13:14:42.559402       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:59422: use of closed network connection
+I0518 13:17:56.821771       1 alloc.go:330] "allocated clusterIPs" service="prdmsg-ns/msg05-svc" clusterIPs={"IPv4":"10.96.252.202"}
+I0518 13:17:56.850371       1 alloc.go:330] "allocated clusterIPs" service="prdstore-ns/store05-svc" clusterIPs={"IPv4":"10.96.232.92"}
+I0518 13:17:56.903333       1 alloc.go:330] "allocated clusterIPs" service="prdstore-ns/web05-svc" clusterIPs={"IPv4":"10.96.110.214"}
+I0518 13:24:41.960845       1 alloc.go:330] "allocated clusterIPs" service="prdmsg-ns/msg05-svc" clusterIPs={"IPv4":"10.96.39.170"}
+I0518 13:24:42.051154       1 alloc.go:330] "allocated clusterIPs" service="prdstore-ns/store05-svc" clusterIPs={"IPv4":"10.96.146.210"}
+I0518 13:24:42.110028       1 alloc.go:330] "allocated clusterIPs" service="prdstore-ns/web05-svc" clusterIPs={"IPv4":"10.96.34.97"}
+E0518 13:35:15.370963       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:55314: use of closed network connection
+I0518 13:46:31.447523       1 alloc.go:330] "allocated clusterIPs" service="default/clusterip-svc" clusterIPs={"IPv4":"10.96.76.85"}
+E0518 13:48:47.849845       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60140: use of closed network connection
+I0518 14:08:46.965676       1 alloc.go:330] "allocated clusterIPs" service="default/clusterip-svc" clusterIPs={"IPv4":"10.96.75.205"}
+E0518 14:09:18.375882       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:56258: use of closed network connection
+E0518 14:10:31.113812       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:58048: use of closed network connection
+I0518 14:13:43.308890       1 alloc.go:330] "allocated clusterIPs" service="default/daemonset-svc-clusterip" clusterIPs={"IPv4":"10.96.199.247"}
+I0518 14:19:57.291137       1 alloc.go:330] "allocated clusterIPs" service="default/clusterip-svc" clusterIPs={"IPv4":"10.96.160.42"}
+I0518 14:23:59.377346       1 alloc.go:330] "allocated clusterIPs" service="default/clusterip-svc" clusterIPs={"IPv4":"10.96.247.71"}
+E0518 14:25:17.254455       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:63660: use of closed network connection
+I0518 14:58:03.853715       1 alloc.go:330] "allocated clusterIPs" service="default/clusterip-svc" clusterIPs={"IPv4":"10.96.168.169"}
+E0518 15:12:33.719070       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:62486: use of closed network connection
+E0518 15:13:58.628337       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:55660: use of closed network connection
+E0518 15:15:08.965343       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:62770: use of closed network connection
+E0518 15:16:05.788192       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60952: use of closed network connection
+E0518 15:19:50.352964       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:58768: use of closed network connection
+E0518 15:35:37.207894       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60288: use of closed network connection
+E0518 15:42:01.825708       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.2:52664: use of closed network connection
+E0518 15:42:13.512369       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.2:52790: use of closed network connection
+E0518 15:47:19.152734       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:60136: use of closed network connection
+I0518 15:54:38.885891       1 alloc.go:330] "allocated clusterIPs" service="default/nginx-deploy" clusterIPs={"IPv4":"10.96.121.173"}
+E0518 16:01:49.964495       1 conn.go:339] Error on socket receive: read tcp 172.18.0.2:6443->172.18.0.1:62348: use of closed network connection
+I0518 16:04:43.746957       1 alloc.go:330] "allocated clusterIPs" service="default/nginx-svc" clusterIPs={"IPv4":"10.96.152.190"}
+I0518 16:32:17.633414       1 controller.go:615] quota admission added evaluator for: jobs.batch
+I0518 16:32:34.048237       1 controller.go:615] quota admission added evaluator for: poddisruptionbudgets.policy
+I0518 16:32:34.090409       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.106157       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.111144       1 handler.go:286] Adding GroupVersion executor.testkube.io v1 to ResourceManager
+I0518 16:32:34.113720       1 handler.go:286] Adding GroupVersion executor.testkube.io v1 to ResourceManager
+I0518 16:32:34.118704       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.123166       1 handler.go:286] Adding GroupVersion executor.testkube.io v1 to ResourceManager
+I0518 16:32:34.130905       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.131006       1 handler.go:286] Adding GroupVersion tests.testkube.io v2 to ResourceManager
+I0518 16:32:34.156210       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.223506       1 handler.go:286] Adding GroupVersion testworkflows.testkube.io v1 to ResourceManager
+I0518 16:32:34.225210       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.225243       1 handler.go:286] Adding GroupVersion tests.testkube.io v2 to ResourceManager
+I0518 16:32:34.225259       1 handler.go:286] Adding GroupVersion tests.testkube.io v3 to ResourceManager
+I0518 16:32:34.250876       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.265966       1 alloc.go:330] "allocated clusterIPs" service="testkube/testkube-api-server" clusterIPs={"IPv4":"10.96.152.110"}
+I0518 16:32:34.270371       1 handler.go:286] Adding GroupVersion tests.testkube.io v1 to ResourceManager
+I0518 16:32:34.270405       1 handler.go:286] Adding GroupVersion tests.testkube.io v2 to ResourceManager
+I0518 16:32:34.270421       1 handler.go:286] Adding GroupVersion tests.testkube.io v3 to ResourceManager
+I0518 16:32:34.287226       1 alloc.go:330] "allocated clusterIPs" service="testkube/testkube-minio-service-testkube" clusterIPs={"IPv4":"10.96.182.215"}
+I0518 16:32:34.292474       1 alloc.go:330] "allocated clusterIPs" service="testkube/testkube-operator-controller-manager-metrics-service" clusterIPs={"IPv4":"10.96.3.109"}
+I0518 16:32:34.294527       1 alloc.go:330] "allocated clusterIPs" service="testkube/testkube-nats" clusterIPs={"IPv4":"10.96.76.13"}
+I0518 16:32:34.296796       1 alloc.go:330] "allocated clusterIPs" service="testkube/testkube-operator-webhook-service" clusterIPs={"IPv4":"10.96.46.110"}
+I0518 16:32:34.299897       1 alloc.go:330] "allocated clusterIPs" service="testkube/testkube-mongodb" clusterIPs={"IPv4":"10.96.76.45"}
+I0518 16:32:34.307849       1 controller.go:615] quota admission added evaluator for: statefulsets.apps
+I0518 16:32:34.530764       1 handler.go:286] Adding GroupVersion testworkflows.testkube.io v1 to ResourceManager
+I0518 16:32:34.667872       1 handler.go:286] Adding GroupVersion testworkflows.testkube.io v1 to ResourceManager
+I0518 16:32:42.304653       1 controller.go:615] quota admission added evaluator for: testworkflowtemplates.testworkflows.testkube.io
+I0518 16:33:18.006988       1 controller.go:615] quota admission added evaluator for: executors.executor.testkube.io
+E0518 17:12:34.736303       1 authentication.go:74] "Unable to authenticate the request" err="[invalid bearer token, service account token has expired]"
+E0518 17:12:34.743714       1 authentication.go:74] "Unable to authenticate the request" err="[invalid bearer token, service account token has expired]"
+W0518 17:19:16.448108       1 watcher.go:338] watch chan error: etcdserver: mvcc: required revision has been compacted
+W0518 18:02:41.150463       1 watcher.go:338] watch chan error: etcdserver: mvcc: required revision has been compacted
+I0518 18:05:08.298854       1 alloc.go:330] "allocated clusterIPs" service="sonobuoy/sonobuoy-aggregator" clusterIPs={"IPv4":"10.96.161.202"}
+W0518 18:21:08.448933       1 watcher.go:338] watch chan error: etcdserver: mvcc: required revision has been compacted
+I0518 18:34:04.847133       1 alloc.go:330] "allocated clusterIPs" service="sonobuoy/sonobuoy-aggregator" clusterIPs={"IPv4":"10.96.56.186"}

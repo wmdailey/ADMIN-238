@@ -1,0 +1,24 @@
+# Exercise 20-02 v1.0.0
+#
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db09-netpol
+  namespace: devstore-ns
+spec:
+  podSelector:
+    matchLabels:
+      pod: db09-pod
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress: 
+    - from:
+      - podSelector:
+          matchLabels:
+            pod: web09-pod
+      ports:
+        - protocol: TCP
+          port: 6379
+

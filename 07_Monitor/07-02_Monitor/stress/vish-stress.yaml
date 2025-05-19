@@ -1,0 +1,20 @@
+# Exercise 06-05 v1.0.0
+#
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress-node
+spec:
+  nodeName: edu-kind-worker
+  containers:
+  - name: node-stress 
+    image: vish/stress
+    args:
+    - -cpus
+    - "1"
+    resources:
+      limits:
+        cpu: "0.395"
+      requests:
+        cpu: "0.35"

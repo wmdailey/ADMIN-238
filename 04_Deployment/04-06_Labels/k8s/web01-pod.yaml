@@ -1,0 +1,18 @@
+# Exercise 04-06 v1.0.0
+#
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web01-pod
+  namespace: default
+  labels:
+    bu: sam
+    env: prod
+    tier: frontend
+spec:
+  containers:
+  - name: web-app
+    image: nginx:1.27.5-alpine
+    ports:
+    - containerPort: 80

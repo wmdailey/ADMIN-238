@@ -1,0 +1,13 @@
+# Exercise: 04-04 v1.0.0
+#
+---
+apiVersion: app/v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: db-app
+    image: ngginx:1.28.0
+  ports:
+  - containerPort: 80

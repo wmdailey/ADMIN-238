@@ -1,0 +1,18 @@
+I0518 12:05:06.014615       1 server.go:698] "Successfully retrieved node IP(s)" IPs=["172.18.0.5"]
+I0518 12:05:06.014703       1 conntrack.go:121] "Set sysctl" entry="net/netfilter/nf_conntrack_tcp_timeout_established" value=86400
+I0518 12:05:06.014777       1 conntrack.go:121] "Set sysctl" entry="net/netfilter/nf_conntrack_tcp_timeout_close_wait" value=3600
+E0518 12:05:06.014804       1 server.go:234] "Kube-proxy configuration may be incomplete or incorrect" err="nodePortAddresses is unset; NodePort connections will be accepted on all local IPs. Consider using `--nodeport-addresses primary`"
+I0518 12:05:06.035429       1 server.go:243] "kube-proxy running in dual-stack mode" primary ipFamily="IPv4"
+I0518 12:05:06.035479       1 server_linux.go:170] "Using iptables Proxier"
+I0518 12:05:06.037243       1 proxier.go:255] "Setting route_localnet=1 to allow node-ports on localhost; to change this either disable iptables.localhostNodePorts (--iptables-localhost-nodeports) or set nodePortAddresses (--nodeport-addresses) to filter loopback addresses" ipFamily="IPv4"
+I0518 12:05:06.037426       1 server.go:497] "Version info" version="v1.32.2"
+I0518 12:05:06.037450       1 server.go:499] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I0518 12:05:06.039682       1 config.go:329] "Starting node config controller"
+I0518 12:05:06.039694       1 shared_informer.go:313] Waiting for caches to sync for node config
+I0518 12:05:06.039706       1 config.go:199] "Starting service config controller"
+I0518 12:05:06.039713       1 shared_informer.go:313] Waiting for caches to sync for service config
+I0518 12:05:06.039720       1 config.go:105] "Starting endpoint slice config controller"
+I0518 12:05:06.039727       1 shared_informer.go:313] Waiting for caches to sync for endpoint slice config
+I0518 12:05:06.140339       1 shared_informer.go:320] Caches are synced for endpoint slice config
+I0518 12:05:06.140371       1 shared_informer.go:320] Caches are synced for service config
+I0518 12:05:06.140376       1 shared_informer.go:320] Caches are synced for node config

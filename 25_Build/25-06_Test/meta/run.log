@@ -1,0 +1,59 @@
+{"level":"info","msg":"Starting server Expected Results: [{global e2e 0} {edu-control-plane systemd-logs 0} {edu-worker systemd-logs 0} {edu-worker2 systemd-logs 0} {edu-worker3 systemd-logs 0}]","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"Starting annotation update routine","time":"2025-05-18T18:34:05Z"}
+{"address":"0.0.0.0","level":"info","msg":"Starting aggregation server","port":8080,"time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"Received plugin launch order:","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"e2e: 0","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"systemd-logs: 0","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"Running plugin","plugin":"e2e","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"Running plugin","plugin":"systemd-logs","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"Launching plugin e2e with order 0","time":"2025-05-18T18:34:05Z"}
+{"level":"info","msg":"Launching plugin systemd-logs with order 0","time":"2025-05-18T18:34:05Z"}
+{"client_cert":["systemd-logs"],"level":"info","method":"PUT","msg":"received request","node":"edu-worker","plugin_name":"systemd-logs","time":"2025-05-18T18:34:11Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/results/by-node/edu-worker/systemd-logs","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["systemd-logs"],"level":"info","method":"PUT","msg":"received request","node":"edu-worker3","plugin_name":"systemd-logs","time":"2025-05-18T18:34:11Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/results/by-node/edu-worker3/systemd-logs","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["systemd-logs"],"level":"info","method":"PUT","msg":"received request","node":"edu-control-plane","plugin_name":"systemd-logs","time":"2025-05-18T18:34:11Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/results/by-node/edu-control-plane/systemd-logs","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["systemd-logs"],"level":"info","method":"PUT","msg":"received request","node":"edu-worker2","plugin_name":"systemd-logs","time":"2025-05-18T18:34:11Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/results/by-node/edu-worker2/systemd-logs","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["e2e"],"level":"info","method":"POST","msg":"received request","plugin_name":"e2e","time":"2025-05-18T18:34:23Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/progress/global/e2e","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["e2e"],"level":"info","method":"POST","msg":"received request","plugin_name":"e2e","time":"2025-05-18T18:34:23Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/progress/global/e2e","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["e2e"],"level":"info","method":"POST","msg":"received request","plugin_name":"e2e","time":"2025-05-18T18:34:26Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/progress/global/e2e","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"client_cert":["e2e"],"level":"info","method":"PUT","msg":"received request","plugin_name":"e2e","time":"2025-05-18T18:34:32Z","url":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/api/v1/results/global/e2e","RawPath":"","OmitHost":false,"ForceQuery":false,"RawQuery":"","Fragment":"","RawFragment":""}}
+{"level":"info","msg":"All plugins have completed, status has been updated","time":"2025-05-18T18:34:32Z"}
+{"level":"info","msg":"Shutting down aggregation server","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Resources is not set explicitly implying query all resources, but skipping secrets for safety. Specify the value explicitly in Resources to gather this data.","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Collecting Node Configuration and Health...","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Creating host results for edu-control-plane under /tmp/sonobuoy/549604dc-7d1a-400f-9846-45c1e0524f31/hosts/edu-control-plane\n","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Creating host results for edu-worker under /tmp/sonobuoy/549604dc-7d1a-400f-9846-45c1e0524f31/hosts/edu-worker\n","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Creating host results for edu-worker2 under /tmp/sonobuoy/549604dc-7d1a-400f-9846-45c1e0524f31/hosts/edu-worker2\n","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Creating host results for edu-worker3 under /tmp/sonobuoy/549604dc-7d1a-400f-9846-45c1e0524f31/hosts/edu-worker3\n","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Running cluster queries","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Querying server version and API Groups","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Filtering namespaces based on the following regex:.*","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace default Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace kube-node-lease Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace kube-public Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace kube-system Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace local-path-storage Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace sonobuoy Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Namespace testkube Matched=true","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Running ns query (default)","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Running ns query (kube-node-lease)","time":"2025-05-18T18:34:35Z"}
+{"level":"info","msg":"Running ns query (kube-public)","time":"2025-05-18T18:34:37Z"}
+{"level":"info","msg":"Running ns query (kube-system)","time":"2025-05-18T18:34:38Z"}
+{"level":"info","msg":"Running ns query (local-path-storage)","time":"2025-05-18T18:34:39Z"}
+{"level":"info","msg":"Running ns query (sonobuoy)","time":"2025-05-18T18:34:41Z"}
+{"level":"info","msg":"Running ns query (testkube)","time":"2025-05-18T18:34:42Z"}
+{"level":"info","msg":"Namespace default Matched=false","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Namespace kube-node-lease Matched=false","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Namespace kube-public Matched=false","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Namespace kube-system Matched=true","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Namespace local-path-storage Matched=false","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Namespace sonobuoy Matched=true","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Namespace testkube Matched=false","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"querying pod logs under namespace kube-system","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Collecting Pod Logs by namespace (kube-system)","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"querying pod logs under namespace sonobuoy","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Collecting Pod Logs by namespace (sonobuoy)","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Collecting Pod Logs by FieldSelectors: []","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"recording query times at /tmp/sonobuoy/549604dc-7d1a-400f-9846-45c1e0524f31/meta/query-time.json","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Log lines after this point will not appear in the downloaded tarball.","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Invoking plugin cleanup","plugin":"e2e","time":"2025-05-18T18:34:44Z"}
+{"level":"info","msg":"Invoking plugin cleanup","plugin":"systemd-logs","time":"2025-05-18T18:34:44Z"}

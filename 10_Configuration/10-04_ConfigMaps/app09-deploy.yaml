@@ -1,0 +1,33 @@
+# Exercise 10-04 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app09-deploy 
+  labels:
+    app: store-app 
+spec:
+  replicas: 2  
+  selector:
+    matchLabels:
+      pod: app09-pod 
+  template:
+    metadata:
+      labels:
+        pod: app09-pod 
+    spec:
+      containers:
+      - name: busy-app 
+        image: busybox:1.28
+        command: ["sh", "-c", "ls /etc/config/ && sleep 360"] 
+        volumeMounts:
+          - name: app09-cm-vol
+            mountPath: /etc/config
+      volumes:
+        - name: app09-cm-vol
+          configMap:
+            name: app09-cm
+
+
+            

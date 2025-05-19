@@ -1,0 +1,38 @@
+# Exercise 19-2 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app10-deploy 
+  labels:
+    app: store-app 
+    tier: backend
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      pod: app10-pod 
+  template:
+    metadata:
+      labels:
+        pod: app10-pod 
+    spec:
+      containers:
+        - name: busy-app 
+          image: busybox:1.28
+          command: ["sh", "-c", "echo Hello Kubernetes! && sleep 3600"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app10-svc 
+  labels: 
+    app: store-app
+    tier: backend
+spec:
+  selector:
+    pod: app10-pod
+  ports:
+    - port: 80 
+      targetPort: 80

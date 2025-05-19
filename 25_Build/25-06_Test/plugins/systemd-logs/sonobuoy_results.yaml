@@ -1,0 +1,41 @@
+name: systemd-logs
+status: passed
+meta:
+  type: summary
+items:
+- name: edu-control-plane
+  status: passed
+  meta:
+    type: node
+  items:
+  - name: systemd_logs
+    status: passed
+    meta:
+      file: results/edu-control-plane/systemd_logs
+- name: edu-worker
+  status: passed
+  meta:
+    type: node
+  items:
+  - name: systemd_logs
+    status: passed
+    meta:
+      file: results/edu-worker/systemd_logs
+- name: edu-worker2
+  status: passed
+  meta:
+    type: node
+  items:
+  - name: systemd_logs
+    status: passed
+    meta:
+      file: results/edu-worker2/systemd_logs
+- name: edu-worker3
+  status: passed
+  meta:
+    type: node
+  items:
+  - name: systemd_logs
+    status: passed
+    meta:
+      file: results/edu-worker3/systemd_logs

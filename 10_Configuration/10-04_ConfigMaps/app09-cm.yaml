@@ -1,0 +1,19 @@
+# Exercise 10-04 v1.0.0
+#
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app09-cm 
+data:
+  END_USER: dana_dev
+  GROUPS: dev,ops
+  ROLE: developer
+  QOP: auth
+  STAT.INTERVAL: "36000"
+  PROVIDER: tvmx
+  INTERFACE: default
+  CHANNEL_ADDRESS: 0.0.0.0:8686
+  INTERNAL_ADDRESS: 0.0.0.0:9864
+  REDUNDANCY: "true"
+

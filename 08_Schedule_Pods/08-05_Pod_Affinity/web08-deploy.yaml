@@ -1,0 +1,36 @@
+# Exercise 07-05 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web08-deploy 
+  labels: 
+    app: store-app 
+spec:
+  selector:
+    matchLabels:
+      pod: web08-pod
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        pod: web08-pod
+        bu: fin
+    spec:
+      containers:
+      - name: my-app
+        image: nginx:1.24
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: bu
+                operator: In
+                values:
+                - fin
+            topologyKey: "kubernetes.io/hostname"
+
+
+            
