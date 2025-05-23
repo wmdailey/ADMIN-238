@@ -27,5 +27,3 @@ spec:
         command: ["/bin/echo"] 
         args: ["$(MESSAGE)"]
 
-
-        

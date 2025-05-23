@@ -23,6 +23,5 @@ spec:
         image: busybox:1.28
         command: ["printenv"] 
         args: ["HOSTNAME", "KUBERNETES_PORT"]
-      restartPolicy: OnFailure
 
 
