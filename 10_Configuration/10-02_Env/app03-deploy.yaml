@@ -27,3 +27,8 @@ spec:
         command: ["/bin/echo"] 
         args: ["$(MESSAGE)"]
 
+<<<<<<< HEAD
+=======
+
+        
+>>>>>>> d15e94a3cf9099a5401e825e733b82b2b06e07de
