@@ -1,0 +1,42 @@
+# Exercise 21-07 v1.0.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-client-provisioner
+  labels:
+    app: nfs-client-provisioner
+  namespace: nfs-storage
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+        - name: nfs-client-provisioner
+          image: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner:v4.0.2
+          volumeMounts:
+            - name: nfs-client-root
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: k8s-sigs.io/nfs-subdir-external-provisioner
+            - name: NFS_SERVER
+              value: edu-control-plane # use your nfs server
+            - name: NFS_PATH
+              value: /var/nfs/kubedata # use your nfs exports path
+      volumes:
+        - name: nfs-client-root
+          nfs:
+            server: edu-control-plane # use your nfs server
+            path: /var/nfs/kubedata # use your nfs exports path
+

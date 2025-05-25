@@ -1,9 +1,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: test-claim
+  name: db04-pvc
 spec:
-  #storageClassName: managed-nfs-storage
+  storageClassName: managed-nfs-storage # Sets default
   accessModes:
     - ReadWriteMany
   resources:

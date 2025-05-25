@@ -1,0 +1,65 @@
+# Exercise 21-05 v1.0.0
+#
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db04-cm 
+  namespace: database
+  labels:
+    app: db04-db 
+data:
+  POSTGRES_DB: db04-db
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: BadPass@1
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db04-sts
+  namespace: database
+  labels:
+    app: db04-db
+spec:
+  serviceName: db04-svc
+  selector:
+    matchLabels:
+      pod: db04-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        pod: db04-pod
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:17.5
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: db04-cm 
+          volumeMounts:
+            - name: db04-vol
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: db04-vol
+          persistentVolumeClaim:
+            claimName: db04-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db04-svc
+  namespace: database
+  labels:
+    app: db04-db
+spec:
+  selector:
+    pod: db04-pod
+  ports:
+    - protocol: TCP
+      name: http
+      port: 5432
+      targetPort: 5432
