@@ -1,5 +1,0 @@
-time="2025-05-18T18:34:23Z" level=trace msg="Invoked command global with args [] and flags [level=trace logtostderr=true v=6]"
-time="2025-05-18T18:34:23Z" level=info msg="Waiting for waitfile" waitfile=/tmp/sonobuoy/results/done
-time="2025-05-18T18:34:23Z" level=info msg="Starting to listen on port 8099 for progress updates and will relay them to https://[10.244.1.26]:8080/api/v1/progress/global/e2e"
-time="2025-05-18T18:34:27Z" level=trace msg="Detected done file but sleeping for 5s then checking again for file. This allows other containers to intervene if desired."
-time="2025-05-18T18:34:32Z" level=info msg="Detected done file, transmitting result file" resultFile=/tmp/sonobuoy/results/e2e.tar.gz

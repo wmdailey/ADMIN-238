@@ -1,6 +1,0 @@
-time="2025-05-18T18:34:05Z" level=trace msg="Invoked command single-node with args [] and flags [level=trace logtostderr=true sleep=-1 v=6]"
-time="2025-05-18T18:34:05Z" level=info msg="Waiting for waitfile" waitfile=/tmp/sonobuoy/results/done
-time="2025-05-18T18:34:05Z" level=info msg="Starting to listen on port 8099 for progress updates and will relay them to https://[10.244.1.26]:8080/api/v1/progress/by-node/edu-worker/systemd-logs"
-time="2025-05-18T18:34:06Z" level=trace msg="Detected done file but sleeping for 5s then checking again for file. This allows other containers to intervene if desired."
-time="2025-05-18T18:34:11Z" level=info msg="Detected done file, transmitting result file" resultFile=/tmp/sonobuoy/results/systemd_logs
-time="2025-05-18T18:34:11Z" level=info msg="Results transmitted to aggregator.  Sleeping forever."

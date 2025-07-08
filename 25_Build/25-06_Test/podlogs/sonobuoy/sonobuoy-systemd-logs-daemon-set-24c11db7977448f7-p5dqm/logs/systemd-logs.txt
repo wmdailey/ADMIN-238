@@ -1,1 +1,0 @@
-Plugin is complete. Sleeping indefinitely to avoid container exit and automatic restarts from Kubernetes
