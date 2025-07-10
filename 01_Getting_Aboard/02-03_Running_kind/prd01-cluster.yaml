@@ -1,9 +1,9 @@
-# Exercise 03-07 v1.0.0
+# Exercise 02-03 v1.2.0
 #
 ---
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-name: edu
+name: prd01
 nodes:
 - role: control-plane
   kubeadmConfigPatches:
@@ -19,4 +19,6 @@ nodes:
   - containerPort: 443
     hostPort: 443
     protocol: TCP
+- role: worker
+- role: worker
 - role: worker
