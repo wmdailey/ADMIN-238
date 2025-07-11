@@ -1,3 +1,6 @@
+# Exerciser 11-03 v1.2.0
+#
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,3 +23,4 @@ spec:
       containers:
       - name: web-app
         image: nginx:1.25.0-apline
+        resources: {}

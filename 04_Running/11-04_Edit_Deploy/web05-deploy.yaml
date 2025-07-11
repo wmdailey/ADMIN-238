@@ -3,21 +3,21 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2025-05-03T14:38:31Z"
+  creationTimestamp: "2025-07-10T22:07:20Z"
   generation: 1
   labels:
-    app: store-app
+    app: web05-deploy
   name: web05-deploy
   namespace: default
-  resourceVersion: "21100"
-  uid: 4d0c9f78-efd5-4e47-8855-c767d143daf7
+  resourceVersion: "173231"
+  uid: 9466cc47-817e-435b-8b07-7c98dae55140
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      pod: web05-pod
+      app: web05-pod
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -27,10 +27,10 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        pod: web05-pod
+        app: web05-pod
     spec:
       containers:
-      - image: nginx:1.25.1-alpine
+      - image: nginx:1.28.1-alpine
         imagePullPolicy: Always
         name: nginx
         resources: {}
@@ -44,15 +44,15 @@ spec:
 status:
   availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2025-05-03T14:38:33Z"
-    lastUpdateTime: "2025-05-03T14:38:33Z"
+  - lastTransitionTime: "2025-07-10T22:07:23Z"
+    lastUpdateTime: "2025-07-10T22:07:23Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2025-05-03T14:38:31Z"
-    lastUpdateTime: "2025-05-03T14:38:33Z"
-    message: ReplicaSet "web05-deploy-6d8cd8764b" has successfully progressed.
+  - lastTransitionTime: "2025-07-10T22:07:20Z"
+    lastUpdateTime: "2025-07-10T22:07:23Z"
+    message: ReplicaSet "web05-deploy-66fb46d5bb" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing

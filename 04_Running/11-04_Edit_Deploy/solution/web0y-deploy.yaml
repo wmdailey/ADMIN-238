@@ -1,0 +1,24 @@
+# Exerciser 11-04 v1.2.0 
+#
+---
+apiVersion: apps/v1
+kind: Deployment # Must be in title case
+metadata:
+  name: web-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-pod
+  template:
+    metadata:
+      labels:
+        app: web-pod # Typo in app label
+        type: frontend
+    spec:
+      containers:
+        - name: web-app
+          image: nginx
+          ports:
+            - name: http
+              containerPort: 80
