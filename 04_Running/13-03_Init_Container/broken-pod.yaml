@@ -9,4 +9,4 @@ spec:
     command:
     - sh
     - -c
-    - echo The app is running! & sleep 30
+    - echo The app is running! & sleep 36x0

@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web04-pod
+  name: web02-pod
   labels:
     app: web-app
   annotations:
@@ -19,4 +19,3 @@ spec:
   - name: logging-sidecar
     image: busybox:1.28
     command: ['sh', '-c', "while true; do echo sync logs; sleep 20; done"]
-

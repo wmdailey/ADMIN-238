@@ -4,11 +4,11 @@
 apiVersion: apps/v1
 kind: pod
 metadata:
-  name: my-pod
+  name: my03-pod
   namespace: nospace
 spec:
   containers:
-  - name: db-app
+  - name: my-pod
     image: ngginx:1.28.0
   ports:
   - containerPort: 80
