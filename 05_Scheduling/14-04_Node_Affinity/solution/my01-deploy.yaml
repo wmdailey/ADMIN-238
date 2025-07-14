@@ -1,21 +1,19 @@
-# Exercise 14-04 v1.2.0
-#
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web04-deploy 
+  name: my01-deploy 
   labels:
     app: store-app
 spec:
   replicas: 4
   selector:
     matchLabels:
-      pod: web04-pod
+      pod: my01-pod
   template:
     metadata:
       labels:
-        pod: web04-pod 
+        pod: my01-pod 
     spec:
       containers:
         - name: web-app 
@@ -37,4 +35,4 @@ spec:
                 - key: disktype
                   operator: In
                   values:
-                    - hdd 
+                    - sdd 

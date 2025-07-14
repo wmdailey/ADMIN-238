@@ -1,28 +1,28 @@
-# Exercise 07-07 v1.0.0
+# Exercise 14-07 v1.2.0
 #
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web12-deploy
+  name: web01-deploy
   labels:
     app: store-app 
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: web12-pod
+      app: web01-pod
   template:
     metadata:
       labels:
-        app: web12-pod
+        app: web01-pod
     spec:
       containers:
       - name: web-app
-        image: nginx:1.24
+        image: nginx:1.28.0
+        resources: {}
       tolerations:
         - key: env
           operator: Equal
           value: prod
           effect: NoSchedule
-

@@ -1,36 +1,35 @@
-# Exercise 07-05 v1.0.0
+# Exercise 14-05 v1.2.0
 #
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web08-deploy 
-  labels: 
+  name: app01-deploy 
+  labels:
     app: store-app 
 spec:
+  replicas: 4
   selector:
     matchLabels:
-      pod: web08-pod
-  replicas: 5
+      pod: app01-pod 
   template:
     metadata:
       labels:
-        pod: web08-pod
-        bu: fin
+        pod: app01-pod 
+        app: prdsam
     spec:
       containers:
-      - name: my-app
-        image: nginx:1.24
+      - name: busy-app 
+        image: busybox:1.28
+        command: ["sh", "-c", "echo Hello Kubernetes! && sleep 3600"] 
+        resources: {}
       affinity:
-        podAntiAffinity:
+        podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: bu
+              - key: app
                 operator: In
                 values:
-                - fin
+                - prdsam 
             topologyKey: "kubernetes.io/hostname"
-
-
-            

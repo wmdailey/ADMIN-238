@@ -1,4 +1,4 @@
-# Exercise 08-04 v1.0.0
+# Exercise 15-06 v1.2.0
 # limit-range-memory.yaml
 ---
 apiVersion: v1
@@ -20,4 +20,3 @@ spec:
         max:
           cpu: 500m
           memory: 200Mi
-

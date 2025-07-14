@@ -4,7 +4,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web02-pod 
+  name: web03-pod 
 spec:
   containers:
   - name: web-app 
@@ -12,8 +12,8 @@ spec:
     resources:
       requests:
         cpu: "400m"
-        memory: "600Mi"
+        memory: "20Mi"
       limits:
         cpu: "800m"
-        memory: "800Mi"
+        memory: "40Mi"
 

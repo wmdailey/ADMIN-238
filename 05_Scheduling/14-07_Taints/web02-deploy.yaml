@@ -4,22 +4,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web06-deploy 
+  name: web02-deploy 
   labels:
     app: store-app
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      pod: web06-pod
+      pod: web02-pod
   template:
     metadata:
       labels:
-        pod: web06-pod 
+        pod: web02-pod 
     spec:
       containers:
-        - name: web-app 
-          image: nginx:1.24 
+        - image: nginx:1.24 
+          name: web-app 
           ports:
             - protocol: TCP
               containerPort: 8080
@@ -30,7 +30,11 @@ spec:
             - weight: 1
               preference:
                 matchExpressions:
-                  - key: disktype
+                  - key: arch
                     operator: In
                     values:
-                      - ssd
+                      - gpu
+      tolerations:
+        - key: env
+          operator: Exists
+          effect: NoSchedule

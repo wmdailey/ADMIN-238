@@ -1,26 +1,27 @@
-# Exercise 07-05 v1.0.0
+# Exercise 14-05 v1.2.0
 #
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web09-deploy 
+  name: web04-deploy 
   labels: 
     app: store-app 
 spec:
   selector:
     matchLabels:
-      pod: web09-pod
+      pod: web04-pod
   replicas: 5
   template:
     metadata:
       labels:
-        pod: web09-pod
+        pod: web04-pod
         bu: fin
     spec:
       containers:
       - name: my-app
         image: nginx:1.24
+        resources: {}
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

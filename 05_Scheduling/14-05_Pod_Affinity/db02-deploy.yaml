@@ -1,25 +1,26 @@
-# Exercise 07-05 v1.0.0
+# Exercise 14-05 v1.2.0
 #
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db10-deploy 
+  name: db02-deploy 
   labels:
     app: store-app 
 spec:
   selector:
     matchLabels:
-      pod: db10-pod 
+      pod: db02-pod 
   template:
     metadata:
       labels:
-        pod: db10-pod 
+        pod: db02-pod 
         app: prdfin
     spec:
       containers:
       - name: db-app 
         image: redis 
+        resources: {}
       affinity:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

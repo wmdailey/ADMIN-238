@@ -1,4 +1,4 @@
-# Exercise 08-02 v1.0.0
+# Exercise 15-04 v1.2.0
 #
 ---
 apiVersion: v1
@@ -22,5 +22,5 @@ spec:
         requests:
           memory: 5Mi
         limits:
-          memory: 10Mi
+          memory: 20Mi # Increase the limits over the stress request
 

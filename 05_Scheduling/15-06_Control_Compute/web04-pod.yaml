@@ -1,4 +1,4 @@
-# Exercise 08-04 v1.0.0
+# Exercise 15-06 v1.2.0
 #
 ---
 apiVersion: v1
@@ -9,4 +9,4 @@ spec:
   containers:
   - name: web-app 
     image: nginx
-
+    resources: {}
