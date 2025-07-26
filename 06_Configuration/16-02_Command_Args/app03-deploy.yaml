@@ -1,4 +1,4 @@
-# Exercise 10-02 v1.0.0
+# Exercise 16-02 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -23,12 +23,7 @@ spec:
         image: busybox:1.28
         env:
           - name: MESSAGE
-            value: "Foo goes to a bar"
+            value: "Hello from Cloudera Edu"
         command: ["/bin/echo"] 
         args: ["$(MESSAGE)"]
-
-<<<<<<< HEAD
-=======
-
-        
->>>>>>> d15e94a3cf9099a5401e825e733b82b2b06e07de
+        resources: {}

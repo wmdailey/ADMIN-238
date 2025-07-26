@@ -1,4 +1,4 @@
-# Exercise 10-02 v1.0.0
+# Exercise 16-02 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -50,6 +50,4 @@ spec:
                 printenv MEM_REQUEST MEM_LIMIT;
                sleep 20;
               done;
-
-
-              
+          resources: {}

@@ -1,4 +1,4 @@
-# Exercise 16-02 v1.2.0
+# Exercise 17-02 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -16,11 +16,12 @@ spec:
     metadata:
       labels:
         pod: app01-pod 
-        app: prdsam
     spec:
       containers:
-      - name: busy-app 
+      - name: app-app 
         image: busybox:1.28
-        command: ["/bin/sh"] 
-        args: ["-c", "echo Hello from Cloudera Edu! && sleep 3600"] 
+        envFrom:
+          - configMapRef:
+              name: app01-cm
+        command: ["/bin/sh", "-c", "printenv && sleep 3600"] 
         resources: {}

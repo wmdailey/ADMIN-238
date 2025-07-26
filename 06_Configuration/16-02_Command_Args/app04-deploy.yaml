@@ -1,4 +1,4 @@
-# Exercise 10-02 v1.0.0
+# Exercise 16-02 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -27,5 +27,4 @@ spec:
           - name: DEBUG_MODE
             value: "true"
         command: ["env"] 
-
-
+        resources: {}

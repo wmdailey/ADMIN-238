@@ -1,10 +1,10 @@
-# Exercise 10-04 v1.0.0
+# Exercise 17-02 v1.2.0
 #
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app09-cm 
+  name: app03-cm 
 data:
   END_USER: dana_dev
   GROUPS: dev,ops
