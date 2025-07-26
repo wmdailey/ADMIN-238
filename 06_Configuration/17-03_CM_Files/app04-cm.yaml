@@ -1,0 +1,16 @@
+# Exercise 17-02 v1.2.0
+#
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app04-cm 
+data:
+  app04.conf: |
+    END_USER: dana_dev
+    GROUPS: dev,ops
+    ROLE: developer
+    QOP: auth
+    PROVIDER: tvmx
+    CHANNEL_ADDRESS: 0.0.0.0:8686
+    INTERNAL_ADDRESS: 0.0.0.0:9864

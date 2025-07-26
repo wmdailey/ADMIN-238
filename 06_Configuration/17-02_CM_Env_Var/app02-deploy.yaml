@@ -4,37 +4,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app01-deploy 
+  name: app02-deploy 
   labels:
     app: store-app 
 spec:
   replicas: 2  
   selector:
     matchLabels:
-      pod: app01-pod 
+      pod: app02-pod 
   template:
     metadata:
       labels:
-        pod: app01-pod 
+        pod: app02-pod 
     spec:
       containers:
       - name: app-app 
         image: busybox:1.28
-        command: ["sh", "-c", "echo Hello Cloudera Edu! && sleep 3600"] 
         env:
           - name: END_USER
             valueFrom:
               configMapKeyRef:
-                name: app01-cm
+                name: app02-cm
                 key: END_USER
           - name: GROUPS 
             valueFrom:
               configMapKeyRef:
-                name: app01-cm
+                name: app02-cm
                 key: GROUPS 
-          - name: ROLE 
-            valueFrom:
-              configMapKeyRef:
-                name: app01-cm
-                key: ROLE 
+        command: ["/bin/sh", "-c", "printenv"] 
         resources: {}

@@ -4,57 +4,57 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app02-deploy 
+  name: app03-deploy 
   labels:
     app: store-app 
 spec:
   replicas: 2  
   selector:
     matchLabels:
-      pod: app02-pod 
+      pod: app03-pod 
   template:
     metadata:
       labels:
-        pod: app02-pod 
+        pod: app03-pod 
     spec:
       containers:
       - name: app-app 
         image: busybox:1.28
-        command: ["sh", "-c", "echo Hello Cloudera Edu! && sleep 3600"] 
         env:
           - name: END_USER
             valueFrom:
               configMapKeyRef:
-                name: app02-a-cm
+                name: app03-a-cm
                 key: END_USER
           - name: GROUPS 
             valueFrom:
               configMapKeyRef:
-                name: app02-a-cm
+                name: app03-a-cm
                 key: GROUPS 
           - name: ROLE 
             valueFrom:
               configMapKeyRef:
-                name: app02-b-cm
+                name: app03-a-cm
                 key: ROLE 
           - name: QOP 
             valueFrom:
               configMapKeyRef:
-                name: app02-b-cm
+                name: app03-b-cm
                 key: QOP 
           - name: STAT.INTERVAL 
             valueFrom:
               configMapKeyRef:
-                name: app02-b-cm
+                name: app03-b-cm
                 key: STAT.INTERVAL 
           - name: CHANNEL_ADDRESS 
             valueFrom:
               configMapKeyRef:
-                name: app02-b-cm
+                name: app03-b-cm
                 key: CHANNEL_ADDRESS 
-          - name: REDUNANCY 
+          - name: REDUNDANCY 
             valueFrom:
               configMapKeyRef:
-                name: app02-b-cm
-                key: REDUNANCY 
+                name: app03-b-cm
+                key: REDUNDANCY 
+        command: ["/bin/sh", "-c", "printenv && sleep 3600"] 
         resources: {}

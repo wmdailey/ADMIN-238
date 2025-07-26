@@ -1,0 +1,48 @@
+# Exercise 17-02 v1.2.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app04-deploy 
+  labels:
+    app: store-app 
+spec:
+  replicas: 2  
+  selector:
+    matchLabels:
+      pod: app04-pod 
+  template:
+    metadata:
+      labels:
+        pod: app04-pod 
+    spec:
+      containers:
+      - name: app-app 
+        image: busybox:1.28
+        command: ["/bin/sh", "-c", "echo 'END_USER: $END_USER'; echo 'GROUP: $GROUPS'; echo 'ROLE: $ROLE'; cat /etc/config/app04.conf"]
+        env:
+          - name: END_USER
+            valueFrom:
+              configMapKeyRef:
+                name: app04-cm
+                key: END_USER
+          - name: GROUPS 
+            valueFrom:
+              configMapKeyRef:
+                name: app04-cm
+                key: GROUPS 
+          - name: ROLE 
+            valueFrom:
+              configMapKeyRef:
+                name: app04-cm
+                key: ROLE 
+        volumeMounts:
+          -name: config-vol
+           mountPath: /etc/config
+           readOnly: true
+        resources: {}
+  volumes:
+    -name: config-vol
+     configMap:
+       name: app04-cm
