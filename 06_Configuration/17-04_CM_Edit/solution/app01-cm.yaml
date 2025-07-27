@@ -4,7 +4,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app04-cm 
+  name: app01-cm 
 data:
   END_USER: dana_dev
   GROUPS: dev,ops
