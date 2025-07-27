@@ -1,4 +1,4 @@
-# Exercise 17-02 v1.2.0
+# Exercise 17-03 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -20,8 +20,13 @@ spec:
       containers:
       - name: app-app 
         image: busybox:1.28
-        envFrom:
-          - configMapRef:
-              name: app01-cm
+        volumeMounts:
+          - name: app01-vol
+            mountPath: /etc/config
+            readOnly: true
         command: ["/bin/sh", "-c", "printenv  && sleep 3600"] 
         resources: {}
+      volumes:
+        - name: app01-vol
+          configMap:
+            name: app01-cm

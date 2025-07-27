@@ -20,7 +20,6 @@ spec:
       containers:
       - name: app-app 
         image: busybox:1.28
-        command: ["/bin/sh", "-c", "echo 'END_USER: $END_USER'; echo 'GROUP: $GROUPS'; echo 'ROLE: $ROLE'; cat /etc/config/app04.conf"]
         env:
           - name: END_USER
             valueFrom:
@@ -37,12 +36,13 @@ spec:
               configMapKeyRef:
                 name: app04-cm
                 key: ROLE 
+        command: ["/bin/sh", "-c", "echo 'END_USER: $END_USER'; echo 'GROUP: $GROUPS'; echo 'ROLE: $ROLE'; cat /etc/config/app04.conf"]
         volumeMounts:
-          -name: config-vol
+          -name: app04-vol
            mountPath: /etc/config
            readOnly: true
         resources: {}
   volumes:
-    -name: config-vol
+    -name: app04-vol
      configMap:
        name: app04-cm

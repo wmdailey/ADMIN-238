@@ -24,37 +24,37 @@ spec:
           - name: END_USER
             valueFrom:
               configMapKeyRef:
-                name: app03-a-cm
+                name: app03-conf-cm
                 key: END_USER
           - name: GROUPS 
             valueFrom:
               configMapKeyRef:
-                name: app03-a-cm
+                name: app03-conf-cm
                 key: GROUPS 
           - name: ROLE 
             valueFrom:
               configMapKeyRef:
-                name: app03-a-cm
+                name: app03-conf-cm
                 key: ROLE 
           - name: QOP 
             valueFrom:
               configMapKeyRef:
-                name: app03-b-cm
+                name: app03-prop-cm
                 key: QOP 
           - name: STAT.INTERVAL 
             valueFrom:
               configMapKeyRef:
-                name: app03-b-cm
+                name: app03-prop-cm
                 key: STAT.INTERVAL 
           - name: CHANNEL_ADDRESS 
             valueFrom:
               configMapKeyRef:
-                name: app03-b-cm
+                name: app03-prop-cm
                 key: CHANNEL_ADDRESS 
           - name: REDUNDANCY 
             valueFrom:
               configMapKeyRef:
-                name: app03-b-cm
+                name: app03-prop-cm
                 key: REDUNDANCY 
         command: ["/bin/sh", "-c", "printenv && sleep 3600"] 
         resources: {}

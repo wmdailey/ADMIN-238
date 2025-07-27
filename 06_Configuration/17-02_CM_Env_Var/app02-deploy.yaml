@@ -31,5 +31,5 @@ spec:
               configMapKeyRef:
                 name: app02-cm
                 key: GROUPS 
-        command: ["/bin/sh", "-c", "printenv"] 
+        command: ["/bin/sh", "-c", "printenv && sleep 3600"] 
         resources: {}
