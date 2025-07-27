@@ -6,11 +6,11 @@ kind: ConfigMap
 metadata:
   name: app02-cm 
 data:
-  app04.conf: |
+  app02.conf: ear
     END_USER: dana_dev
     GROUPS: dev,ops
     ROLE: developer
-  app04.properties: |
+  app02.properties: |
     QOP=auth
     STAT.INTERVAL="36000"
     PROVIDER=tvmx

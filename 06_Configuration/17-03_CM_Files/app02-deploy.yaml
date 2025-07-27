@@ -20,11 +20,11 @@ spec:
       containers:
         - name: app-app 
           image: busybox:1.28
-          command: ["/bin/sh", "-c", "printenv  && sleep 3600"] 
           volumeMounts:
             - name: app02-vol
               mountPath: /etc/config
               readOnly: true
+          command: ["/bin/sh", "-c", "printenv  && sleep 3600"] 
           resources: {}
       volumes:
         - name: app02-vol
