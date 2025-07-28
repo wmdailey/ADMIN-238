@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: db01-cm
 data:
-  db_host: mysql-service
+  DB_HOST: mysql-serv
 ---
 apiVersion: v1
 kind: Secret
@@ -11,8 +11,8 @@ metadata:
   name: db01-secret
 type: Opaque
 data:
-  username: dXNlcm5hbWU=
-  password: cGFzc3dvcmQ=
+  USERNAME: b21hcl9vcHMK 
+  PASSWORD: QmFkUGFzc0AxCg== 
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -33,20 +33,21 @@ spec:
       containers:
       - name: db-app 
         image: busybox:1.28
-        command: ['sh', '-c', "printenv MYSQL_USER MYSQL_PASSWORD MYSQL_SERVER"]
         env:
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
               name: db01-secret
-              key: username
+              key: USERNAME
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: db01-secret
-              key: password
+              name: db01-sec
+              key: PASSWORD
         - name: MYSQL_SERVER 
           valueFrom: 
             configMapKeyRef:
               name: db01-cm
-              key: db_host
+              key: MYSQL_HOST 
+        command: ['sh', '-c', "echo 'MYSQL_USER:' $MYSQL_USER 'MYSQL_PASSWORD:' MYSQL_PASSWORD 'MYSQL_SERVER:' MYSQL_SERVER && sleep 3600"]
+        resources: {}

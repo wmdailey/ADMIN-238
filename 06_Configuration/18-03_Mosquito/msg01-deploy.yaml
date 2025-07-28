@@ -1,4 +1,4 @@
-# Exercise 10-07 v1.0.0
+# Exercise 18-03 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -28,6 +28,7 @@ spec:
           - name: mosquitto-secret
             mountPath: /mosquitto/secret
             readOnly: true
+        resources: {}
       volumes: 
         - name: mosquitto-config
           configMap:
@@ -35,5 +36,3 @@ spec:
         - name: mosquitto-secret
           secret:
             secretName: msg01-secret
-
-

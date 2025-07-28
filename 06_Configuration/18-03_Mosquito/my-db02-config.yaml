@@ -13,7 +13,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: db02-secret
+  name: mysql-secret
 type: Opaque
 data:
   secret.file: |
@@ -34,24 +34,23 @@ spec:
   template:
     metadata:
       labels:
-        app: db02-pod
+        pod: db02-pod
     spec:
       containers:
       - name: db02-pod
-        image: busybox:1.22228
-        command: ['sh', '-c', "cat /mysql/db-config; cat /mysql/db-secret"]
-
+        image: busybox:1.28
         volumeMounts:
-        - name: db-config
+        - name: db02-config
           mountPath: /mysql/db-config
         - name: db-secret
-          mountPath: /mysql/db-secret
+          mountPath  /mysql/db-secret
           readOnly: true
-
+        command: ['sh', '-c', "cat /mysql/db-config/mysql.conf; ls /mysql/db-secret/ && sleep 3600"]
+        resources: {}
       volumes:
-        - name: db-conf
+        - name: db-config
           configMap:
             name: mysql-config
         - name: db-secret
           secret:
-            secretName: mysql-secret
+            secretName: dbb01-secret
