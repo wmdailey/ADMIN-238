@@ -1,4 +1,4 @@
-# Exercise 12-02 v1.0.0
+# Exercise 20-02 v1.2.0
 #
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -12,7 +12,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role 
-  name: read-pods-r
+  name: read-pods-role
   apiGroup: rbac.authorization.k8s.io
-
-

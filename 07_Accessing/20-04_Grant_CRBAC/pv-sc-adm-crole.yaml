@@ -1,10 +1,10 @@
-# Exercise 12-04 v1.0.0
+# Exercise 20-04 v1.2.0
 #
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: pv-sc-adm-cr
+  name: pv-sc-adm-crole
 rules:
 - apiGroups: [""]
   resources: ["persistentvolumes"]
@@ -12,4 +12,3 @@ rules:
 - apiGroups: ["storage.k8s.io"]
   resources: ["storageclasses"]
   verbs: ["*"]
-

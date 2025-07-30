@@ -1,4 +1,4 @@
-# Exercise 12-04 v1.0.0
+# Exercise 20-04 v1.2.0
 #
 ---
 kind: ClusterRoleBinding
@@ -11,6 +11,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: node-adm-cr
+  name: node-adm-crole
   apiGroup: rbac.authorization.k8s.io
-
