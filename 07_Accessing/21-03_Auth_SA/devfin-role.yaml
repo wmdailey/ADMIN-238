@@ -1,11 +1,11 @@
-# Exercise 12-02 v1.0.0
+# Exercise 21-03 v1.2.0
 #
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: ops-adm-r
-  namespace: prdfin-ns
+  name: ops-adm-role
+  namespace: devfin-ns
 rules:
 - apiGroups: [""]
   resources: ["*"]
@@ -18,10 +18,9 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: read-pods-r
-  namespace: prdfin-ns
+  name: read-pods-role
+  namespace: devfin-ns
 rules:
 - apiGroups: [""] 
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
-

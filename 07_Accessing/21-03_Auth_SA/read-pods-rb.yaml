@@ -1,17 +1,16 @@
-# Exercise 12-02 v1.0,0
+# Exercise 21-03 v1.2.0
 #
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: ops-adm-rb
-  namespace: prdfin-ns
+  name: read-pods-rb
+  namespace: devfin-ns
 subjects:
-- kind: Group
-  name: ops
+- kind: User
+  name: dana_dev 
   apiGroup: rbac.authorization.k8s.io
 roleRef:
-  kind: Role
-  name: ops-adm-r
+  kind: Role 
+  name: read-pods-role
   apiGroup: rbac.authorization.k8s.io
-

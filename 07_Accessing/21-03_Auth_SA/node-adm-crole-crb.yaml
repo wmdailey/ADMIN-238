@@ -1,10 +1,10 @@
-# Exercise 12-04 v1.0.0
+# Exercise 21-03 v1.2.0
 #
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: node-adm-cr
+  name: node-adm-crole
 rules:
 - apiGroups: [""]
   resources: ["nodes"]
@@ -15,13 +15,12 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: node-adm-crb 
-  namespace: prdfin-ns
+  namespace: devfin-ns
 subjects:
 - kind: ServiceAccount 
   name: fin01-sa 
-  namespace: prdfin-ns
+  namespace: devfin-ns
 roleRef:
   kind: ClusterRole
-  name: node-adm-cr
+  name: node-adm-crole
   apiGroup: rbac.authorization.k8s.io
-
