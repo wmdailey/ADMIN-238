@@ -1,4 +1,4 @@
-# Exercise 14-01 v1.0.0
+# Exercise 23-02 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -24,7 +24,8 @@ spec:
         securityContext:
           capabilities:
             add: [ "NET_ADMIN", "SYS_TIME" ]
+        resources: {}
       - name: sidecar
         image: ubuntu
         command: [ "sleep", "3600" ]
-
+        resources: {}

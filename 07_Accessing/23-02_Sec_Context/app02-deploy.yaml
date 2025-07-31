@@ -1,4 +1,4 @@
-# Exercise 14-01 v1.0.0
+# Exercise 23-02 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -28,6 +28,7 @@ spec:
           volumeMounts:
             - name: sec-ctx-vol
               mountPath: /data/demo
+          resources: {}
       volumes:  
         - name: sec-ctx-vol
           emptyDir: {}
