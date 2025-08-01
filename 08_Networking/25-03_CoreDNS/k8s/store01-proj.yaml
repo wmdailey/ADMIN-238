@@ -1,29 +1,28 @@
-# Exercise 17-05 v1.0.0
+# Exercise 17-03 v1.0.0
 #
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: prdstore-ns
-
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web06-deploy
+  name: store01-deploy
   namespace: prdstore-ns
   labels:
     app: store-app 
-    tier: frontend
+    tier: appserver
 spec:
   replicas: 1
   selector:
     matchLabels:
-      pod: web06-pod
+      pod: store01-pod
   template:
     metadata:
       labels:
-        pod: web06-pod
+        pod: store01-pod
     spec:
       containers:
         - name: web-app
@@ -37,14 +36,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web06-svc
+  name: store01-svc
   namespace: prdstore-ns
   labels:
     app: store-app
-    tier: frontend
+    tier: appserver
 spec:
   selector:
-    pod: web06-pod
+    pod: store01-pod
   ports:
     - protocol: TCP
       port: 8080
