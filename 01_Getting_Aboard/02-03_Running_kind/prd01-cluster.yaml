@@ -16,9 +16,11 @@ nodes:
   - containerPort: 30080
     hostPort: 8080
     protocol: TCP
+    listenAddress: "0.0.0.0"
   - containerPort: 30443
     hostPort: 8443
     protocol: TCP
+    listenAddress: "0.0.0.0"
 - role: worker
 - role: worker
 - role: worker

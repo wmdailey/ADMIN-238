@@ -8,21 +8,21 @@ metadata:
   namespace: prdstore-ns
 spec:
   rules:
-    - host: edu.example
+    - host: store.local
       http:
         paths:
           - pathType: Prefix
             path: /store
             backend:
               service:
-                name: store08-svc 
+                name: store01-svc 
                 port:
                   number: 80
           - pathType: Prefix
             path: /web
             backend:
              service:
-               name: web08-svc 
+               name: web01-svc 
                port:
                  number: 80
 
