@@ -1,21 +1,23 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: service-b
+  name: webstore-video-cm
+  namespace: webstore-ns
 data:
-  path-a.html: |
-    "/path-a.html" on service-b
-  path-b.html: |
-    "/path-b.html" on service-b
+  order.html: |
+    "/order.html" on webstore-video-svc
+  video.html: |
+    "/video.html" on webstore-video-svc
   index.html: |
-    "/" on service-b  
+    "/" on webstore-video-svc
   404.html: |
-    service-b 404 page
+    webstore-video 404 page
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: service-b-nginx.conf
+  name: webstore-video-nginx-cm
+  namespace: webstore-ns
 data:
   nginx.conf: |
     user  nginx;
@@ -48,18 +50,19 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-b
+  name: webstore-video-deploy
+  namespace: webstore-ns
   labels:
-    app: service-b
+    app: webstore-video
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: service-b
+      app: webstore-video-pod
   template:
     metadata:
       labels:
-        app: service-b
+        app: webstore-video-pod
     spec:
       containers:
       - name: nginx
@@ -71,21 +74,24 @@ spec:
           mountPath: "/usr/share/nginx/html/"
         - name: config
           mountPath: "/etc/nginx/"
+        resources: {}
       volumes:
       - name: html
         configMap:
-          name: service-b
+          name: webstore-video-cm
       - name: config
         configMap:
-          name: service-b-nginx.conf
+          name: webstore-video-nginx-cm
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-b
+  name: webstore-video-svc
+  namespace: webstore-ns
 spec:
   selector:
-    app: service-b
+    app: webstore-video-pod
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80

@@ -1,36 +1,32 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: service-a
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: public.service-a.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: service-a
-            port:
-              number: 80
+# Exercise 27-04 v1.2.0
+#
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: service-b
+  name: webstore-ing
+  namespace: webstore-ns
 spec:
   ingressClassName: nginx
   rules:
-  - host: public.service-b.com
+  - host: order.webstore.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: service-b
+            name: webstore-order-svc
+            port:
+              number: 80
+  - host: video.webstore.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webstore-video-svc
             port:
               number: 80
 ---

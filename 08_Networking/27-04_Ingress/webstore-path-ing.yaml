@@ -1,40 +1,31 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: service-a
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: public.my-services.com
-    http:
-      paths:
-      - path: /path-a
-        pathType: Prefix
-        backend:
-          service:
-            name: service-a
-            port:
-              number: 80
+# Exercise 27-04 v1.2.0
+#
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: service-b
+  name: webstore-ing
+  namespace: webstore-ns
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  - host: public.my-services.com
+  - host: webstore.com
     http:
       paths:
-      - path: /path-b
+      - path: /order
         pathType: Prefix
         backend:
           service:
-            name: service-b
+            name: webstore-order-svc
+            port:
+              number: 80
+      - path: /video
+        pathType: Prefix
+        backend:
+          service:
+            name: webstore-video-svc
             port:
               number: 80
 ---

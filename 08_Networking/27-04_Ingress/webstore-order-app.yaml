@@ -1,21 +1,23 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: service-a
+  name: webstore-order-cm
+  namespace: webstore-ns
 data:
-  path-a.html: |
-    "/path-a.html" on service-a
-  path-b.html: |
-    "/path-b.html" on service-a
+  order.html: |
+    "/order.html" on webstore-order-svc
+  video.html: |
+    "/video.html" on webstore-order-svc 
   index.html: |
-    "/" on service-a  
+    "/" on webstore-order-svc 
   404.html: |
-    service-a 404 page
+    webstore-error 404 page
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: service-a-nginx.conf
+  name: webstore-order-nginx-cm
+  namespace: webstore-ns
 data:
   nginx.conf: |
     user  nginx;
@@ -48,18 +50,19 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-a
+  name: webstore-order-deploy
+  namespace: webstore-ns
   labels:
-    app: service-a
+    app: app-webstore
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: service-a
+      app: webstore-order-pod
   template:
     metadata:
       labels:
-        app: service-a
+        app: webstore-order-pod
     spec:
       containers:
       - name: nginx
@@ -71,21 +74,24 @@ spec:
           mountPath: "/usr/share/nginx/html/"
         - name: config
           mountPath: "/etc/nginx/"
+        resources: {}
       volumes:
       - name: html
         configMap:
-          name: service-a
+          name: webstore-order-cm
       - name: config
         configMap:
-          name: service-a-nginx.conf
+          name: webstore-order-nginx-cm
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-a
+  name: webstore-order-svc
+  namespace: webstore-ns
 spec:
   selector:
-    app: service-a
+    app: webstore-order-pod
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
