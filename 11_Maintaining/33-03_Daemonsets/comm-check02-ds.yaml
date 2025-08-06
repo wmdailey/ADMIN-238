@@ -1,18 +1,21 @@
+# Exercise 33-3 v1.2.0
+#
+---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: daemonset-communicate
+  name: comm-check-ds 
   namespace: default
   labels:
-    app: daemonset-communicate
+    app: comm-check-ds 
 spec:
   selector:
     matchLabels:
-      name: daemonset-communicate
+      name: comm-check-pod
   template:
     metadata:
       labels:
-        name: daemonset-communicate
+        name: comm-check-pod 
     spec:
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
@@ -48,6 +51,7 @@ spec:
             memory: 100Mi
         ports:
         - containerPort: 80
+          hostPort: 80
           name: "http"
       terminationGracePeriodSeconds: 30
       volumes:

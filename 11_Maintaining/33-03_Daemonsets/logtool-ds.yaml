@@ -1,26 +1,29 @@
+# Exercise 23-05 v1.0.0
+#
+---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: example-daemonset
+  name: logtool-ds
   namespace: default
   labels:
-    app: example-daemonset
+    app: logtool-ds
 spec:
   selector:
     matchLabels:
-      name: example-daemonset
+      pod: logtool-pod
   template:
     metadata:
       labels:
-        name: example-daemonset
+        pod: logtool-pod
     spec:
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
       # remove it if your masters can't run pods
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
+       - key: node-role.kubernetes.io/control-plane
+         effect: NoSchedule
       containers:
-      - name: example-daemonset
+      - name: logtool-app
         image: alpine:latest
         env:
         - name: NODE_NAME
@@ -30,11 +33,7 @@ spec:
         command:
         - "bin/sh"
         - "-c"
-        - "echo 'Hello! I am running on '$NODE_NAME; while true; do sleep 300s ; done;"
-        resources:
-          limits:
-            memory: 200Mi
-          requests:
-            cpu: 100m
-            memory: 200Mi
+        - "echo 'Logging for '$NODE_NAME; while true; do sleep 300s ; done;"
+        resources: {}
       terminationGracePeriodSeconds: 30
+
