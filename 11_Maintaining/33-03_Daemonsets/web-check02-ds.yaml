@@ -31,7 +31,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        weband:
+        command:
         - "bin/sh"
         - "-c"
         - "echo 'Web URL check for '$NODE_NAME >  /usr/share/nginx/html/index.html"
@@ -39,7 +39,7 @@ spec:
         - name: nginx-page
           mountPath: /usr/share/nginx/html/
       containers:
-      - name: daemonset-webunicate
+      - name: web-check-pod 
         image: nginx:1.20.0-alpine
         volumeMounts:
         - name: nginx-page
