@@ -8,7 +8,7 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    name: comm-check-pod
+    name: web-check-pod
   ports:
     - protocol: TCP
       name: "http"
