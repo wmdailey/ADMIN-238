@@ -1,4 +1,4 @@
-# Exercise v1.0.0
+# Exercise 28-7 v1.2.0
 #
 ---
 apiVersion: storage.k8s.io/v1
@@ -7,6 +7,6 @@ metadata:
   name: managed-nfs-storage
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-provisioner: k8s-sigs.io/nfs-subdir-external-provisioner
+provisioner: k8s-sigs.io/nfs-subdir-external-provisioner # This is default but it can be changed
 parameters:
   archiveOnDelete: "false"

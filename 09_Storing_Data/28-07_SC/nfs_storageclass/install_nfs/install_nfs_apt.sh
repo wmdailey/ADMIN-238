@@ -22,7 +22,7 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 # OR CONDITIONS OF ANY KIND, either express or implied.
 
-# Title: setup_nfs.sh
+# Title: install_nfs_apt.sh
 # Author: WKD
 # Date: 1MAY25
 
@@ -32,7 +32,7 @@
 #set >> /tmp/setvar.txt
 
 # Variables
-NFS_SHARE="/var/nfs-share"
+NFS_SHARE="/src/nfs/kubedata"
 
 # Main
 
@@ -40,18 +40,19 @@ export DEBIAN_FRONTEND=noninteractive
 
 readonly NFS_SHARE="/srv/nfs/kubedata"
 
-echo "[TASK 1] apt update"
-sudo apt-get update -qq >/dev/null
+echo "  apt update"
+ apt-get update -qq >/dev/null
 
-if [[ $HOSTNAME == "edu-control-plane" ]]; then
-  echo "[TASK 2] install nfs server"
-  sudo -E apt-get install -y -qq nfs-kernel-server >/dev/null
-  echo "[TASK 3] creating nfs exports"
-  sudo mkdir -p $NFS_SHARE
-  sudo chown nobody:nogroup $NFS_SHARE
-  echo "$NFS_SHARE *(rw,sync,no_subtree_check)" | sudo tee /etc/exports >/dev/null
-  sudo systemctl restart nfs-kernel-server
+if [[ $HOSTNAME == "prd01-control-plane" ]]; then
+  echo "  install nfs server"
+   apt-get install -y -qq nfs-kernel-server >/dev/null
+  echo "  creating nfs exports"
+   mkdir -p $NFS_SHARE
+   chown nobody:nogroup $NFS_SHARE
+   chmod 0777 $NFS_SHARE
+  echo "$NFS_SHARE *(rw,sync,no_root_squash,no_subtree_check)" |  tee /etc/exports >/dev/null
+   systemctl restart nfs-kernel-server
 else
-  echo "[TASK 2] install nfs common"
-  sudo -E apt-get install -y -qq nfs-common >/dev/null
+  echo "  install nfs common"
+   apt-get install -y -qq nfs-common >/dev/null
 fi

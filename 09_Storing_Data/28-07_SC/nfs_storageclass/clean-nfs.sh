@@ -22,42 +22,28 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 # OR CONDITIONS OF ANY KIND, either express or implied.
 
-# Title: setup_nfs.sh
+# Title: clean-ingress-controller.sh
 # Author: WKD
-# Date: 1MAY25
+# Date: 17JUN25
+# Purpose: Clean out the ingress controller that was installed manually.
+# action menu option.
 
 # DEBUG
 #set -x
 #set -eu
 #set >> /tmp/setvar.txt
 
-# Variables
-NFS_SHARE="/var/nfs-share"
 
-# Main
-echo "Update and Install NFS Package"
-sudo dnf update -y  
-sudo dnf install -y nfs-utils
+# VARIABLE
 
-echo "Create NFS Share"
-sudo mkdir /nfs-share
-sudo chmod -R 777 $NFS_SHARE 
-#sudo chown nobody:nogroup $NFS_SHARE
-echo "/nfs-share  localhost.example.com(rw)" | sudo tee -a /etc/exports > /dev/null
+# MAIN
+kubectl delete sc managed-nfs-storage
+kubectl -n nfs-storage delete deploy nfs-client-provisioner
+kubectl -n nfs-storage delete rolebinding leader-locking-nfs-client-provisioner
+kubectl -n nfs-storage delete role leader-locking-nfs-client-provisioner
+kubectl delete clusterrolebinding run-nfs-client-provisioner
+kubectl delete clusterrole nfs-client-provisioner-runner
+kubectl -n nfs-storage delete serviceaccount nfs-client-provisioner
+kubectl delete ns nfs-storage
 
-echo "Set Firewall Rules"
-sudo firewall-cmd --permanent --zone=public --add-service=nfs
-sudo firewall-cmd --reload
-sudo firewall-cmd --list-all
-
-echo "Start NFS"
-sudo systemctl enable  nfs-server
-sudo systemctl start nfs-server
-
-echo "Test NFS"
-showmount -e
-mkdir ~/nfs-mount
-mount edu-worker:/var/share ~/nfs-mount
-echo "Test NFS" >> ~/nfs-mount/test.txt
-
-sudo ls $NFS_SHARE
+echo "Finished"

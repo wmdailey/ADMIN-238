@@ -1,4 +1,4 @@
-# Exercise 21-07 v1.0.0
+# Exercise 28-07 v1.2.0
 #
 ---
 apiVersion: apps/v1
@@ -31,12 +31,12 @@ spec:
             - name: PROVISIONER_NAME
               value: k8s-sigs.io/nfs-subdir-external-provisioner
             - name: NFS_SERVER
-              value: edu-control-plane # use your nfs server
+              value: prd01-control-plane # set the nfs server
             - name: NFS_PATH
-              value: /var/nfs/kubedata # use your nfs exports path
+              value: /srv/nfs/kubedata # set nfs exports path
+          resources: {}
       volumes:
         - name: nfs-client-root
           nfs:
-            server: edu-control-plane # use your nfs server
-            path: /var/nfs/kubedata # use your nfs exports path
-
+            server: prd01-control-plane # set the nfs server
+            path: /srv/nfs/kubedata # set the nfs exports path

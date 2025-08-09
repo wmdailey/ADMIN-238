@@ -12,6 +12,7 @@ nodes:
     nodeRegistration:
       kubeletExtraArgs:
         node-labels: "ingress-ready=true"
+        system-reserved: "memory=2Gi"
   extraPortMappings:
   - containerPort: 30080
     hostPort: 8080
@@ -22,5 +23,23 @@ nodes:
     protocol: TCP
     listenAddress: "0.0.0.0"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        system-reserved: "memory=2Gi"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        system-reserved: "memory=2Gi"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        system-reserved: "memory=2Gi"

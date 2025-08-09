@@ -1,13 +1,13 @@
-# Exercise 21-05 v1.0.0
+# Exercise 09-05 v1.2.0
 #
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: db03-pvc 
+  name: db01-pvc 
   namespace: database
   labels:
-    app: db03-db
+    app: db01-db
 spec:
   storageClassName: hostpath
   accessModes:
@@ -15,4 +15,3 @@ spec:
   resources:
     requests:
       storage: 50Mi
-

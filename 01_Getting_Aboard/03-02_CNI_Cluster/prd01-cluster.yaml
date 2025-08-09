@@ -11,6 +11,7 @@ nodes:
     kind: InitConfiguration
     nodeRegistration:
       kubeletExtraArgs:
+        system-reserved: "memory=2Gi"
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 30080
@@ -22,8 +23,26 @@ nodes:
     protocol: TCP
     listenAddress: "0.0.0.0"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        system-reserved: "memory=2Gi"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        system-reserved: "memory=2Gi"
 - role: worker
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        system-reserved: "memory=2Gi"
 networking:
   disableDefaultCNI: true
   podSubnet: 10.244.0.0/16
