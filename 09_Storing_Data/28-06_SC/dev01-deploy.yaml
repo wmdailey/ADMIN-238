@@ -22,8 +22,8 @@ spec:
           volumeMounts:
             - name: dev01-storage
               mountPath: /data
+          resources: {}
       volumes:
         - name: dev01-storage
           persistentVolumeClaim:
             claimName: dev01-pvc  # Reference your PVC name
-

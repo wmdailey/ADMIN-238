@@ -37,15 +37,9 @@
 # VARIABLE
 
 # MAIN
-kubectl delete pod db01-pod
-kubectl delete pvc db01-pvc
-kubectl -n nfs-storage delete deploy nfs-client-provisioner
-kubectl -n nfs-storage delete rolebinding leader-locking-nfs-client-provisioner
-kubectl -n nfs-storage delete role leader-locking-nfs-client-provisioner
-kubectl delete clusterrolebinding run-nfs-client-provisioner
-kubectl delete clusterrole nfs-client-provisioner-runner
-kubectl -n nfs-storage delete serviceaccount nfs-client-provisioner
-kubectl delete ns nfs-storage
-kubectl delete sc managed-nfs-storage
+kubectl -n devl-ns delete deploy dev01-deploy dev02-deploy
+kubectl -n devl-ns delete pvc dev01-pvc dev02-pvc
+kubectl delete sc devl-sc 
+kubectl delete ns devl-ns
 
 echo "Finished"
