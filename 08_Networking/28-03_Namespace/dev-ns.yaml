@@ -1,13 +1,18 @@
-# Exercise 20-03 v1.0.0
+# Exercise 28-03 v1.2.0
 #
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: devstore-ns
+  name: app-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: database-ns
+  name: db-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: web-ns
 

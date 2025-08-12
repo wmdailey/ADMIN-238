@@ -1,0 +1,36 @@
+# Exercise 28-02 v1.2.0
+#
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web01-pod
+  namespace: web-ns
+  labels:
+    app: store-app
+    tier: backend
+spec:
+  containers:
+    - name: nginx
+      image: nginx:bullseye
+      ports:
+        - containerPort: 80
+      resources: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web01-svc
+  namespace: web-ns
+  labels:
+    app: store-app
+    tier: frontend
+spec:
+  type: ClusterIP
+  selector:
+    pod: web01-pod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
