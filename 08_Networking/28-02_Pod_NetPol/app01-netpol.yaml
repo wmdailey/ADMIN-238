@@ -4,21 +4,19 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: db01-netpol
-  namespace: dev-ns
+  name: app01-netpol
+  namespace: db-ns
 spec:
   podSelector:
     matchLabels:
-      pod: db01-pod
+      pod: app01-pod
   policyTypes:
     - Ingress
-    - Egress
-  ingress: 
+  ingress:
     - from:
       - podSelector:
-          matchLabels:
-            pod: web01-pod
+          matchLabels: 
+            pod: web01-pod 
       ports:
         - protocol: TCP
-          port: 6379
-
+          port: 8080 

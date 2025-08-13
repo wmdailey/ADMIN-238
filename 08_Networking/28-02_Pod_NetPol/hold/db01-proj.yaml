@@ -1,0 +1,39 @@
+# Exercise 28-02 v1.2.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db01-deploy 
+  namespace: db-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: db01-pod
+  template:
+    metadata:
+      labels:
+        pod: db01-pod
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        ports:
+        - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db01-svc
+  namespace: db-ns
+  labels:
+    app: store-app
+spec:
+  type: ClusterIP 
+  selector:
+    pod: db01-pod
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379 

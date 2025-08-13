@@ -33,15 +33,12 @@
 #set -eu
 #set >> /tmp/setvar.txt
 
-
 # VARIABLE
 
 # MAIN
-kubectl -n dev-ns delete pod app01-pod web01-pod
-kubectl -n dev-ns delete sts db01-sts 
-kubectl -n dev-ns delete cm db01-cm
-kubectl -n dev-ns delete svc app01-svc web01-svc db01-svc
-kubectl -n dev-ns delete app01-netpol db01-netpol
-kubectl delete ns dev-ns
+kubectl -n db-ns delete pods app01-pod db01-pod  web01-pod
+kubectl -n db-ns delete svc app01-svc web01-svc db01-svc
+kubectl -n db-ns delete netpol app01-netpol db01-netpol
+kubectl delete ns db-ns
 
 echo "Finished"
