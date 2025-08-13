@@ -6,12 +6,15 @@ kind: Pod
 metadata:
   name: app01-pod 
   namespace: db-ns 
+  labels:
+    tier: frontend
+    app: store-app
 spec:
   containers:
     - name: node
-      image: csanchez/croc-hunter 
+      image: wmdailey/kube-backend 
       ports:
-         - containerPort: 8080 
+         - containerPort: 5000 
 ---
 apiVersion: v1
 kind: Service
@@ -26,5 +29,5 @@ spec:
     pod: app01-pod
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 5000 
+      targetPort: 5000

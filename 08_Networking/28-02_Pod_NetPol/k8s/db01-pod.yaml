@@ -6,6 +6,9 @@ kind: Pod
 metadata:
   name: db01-pod 
   namespace: db-ns
+  labels:
+    tier: database
+    app: store-app
 spec:
   containers:
     - name: redis

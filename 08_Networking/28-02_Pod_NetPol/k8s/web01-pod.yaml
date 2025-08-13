@@ -6,6 +6,9 @@ kind: Pod
 metadata:
   name: web01-pod
   namespace: db-ns
+  labels:
+    tier: backend
+    app: store-app
 spec:
   containers:
     - name: nginx
