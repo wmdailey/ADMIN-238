@@ -4,13 +4,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web01
+  name: web01-deploy
   namespace: dev-ns
   labels:
     app: store-app
     tier: backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       pod: web01-pod
@@ -18,14 +18,30 @@ spec:
     metadata:
       labels:
         pod: web01-pod
+        env: development
+        version: "2.0"
     spec:
       containers:
       - name: kube-backend
         image: wmdailey/kube-backend:latest
-        imagePullPolicy: Always
         ports:
           - containerPort: 5000
             protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 3
+          periodSeconds: 2
+          failureThreshold: 4
+        resources: {}
 
 ---
 apiVersion: v1
