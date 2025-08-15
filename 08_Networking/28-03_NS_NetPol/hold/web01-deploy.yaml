@@ -1,0 +1,48 @@
+# Exercise 32-02 v1.2.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web01-deploy
+  namespace: dev-ns
+  labels:
+    app: store-app
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      pod: web01-pod
+  template:
+    metadata:
+      labels:
+        pod: web01-pod
+        env: development
+        version: "3.0"
+    spec:
+      containers:
+      - name: web01-backend
+        image: wmdailey/edu-backend:latest
+        ports:
+          - containerPort: 5000
+            protocol: TCP
+        resources: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web01-svc
+  namespace: dev-ns
+  labels:
+    app: store-app
+spec:
+  type: ClusterIP
+  selector:
+    pod: web01-pod
+  ports:
+    - name: http
+      port: 5000 
+      targetPort: 5000 
+      protocol: TCP

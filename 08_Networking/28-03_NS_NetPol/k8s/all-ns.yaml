@@ -1,0 +1,17 @@
+# Exercise 28-03 v1.2.0
+#
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: db-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prd-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-ns

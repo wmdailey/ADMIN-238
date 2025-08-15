@@ -1,0 +1,40 @@
+# Exercise 28-02 v1.2.0
+#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app01-deploy 
+  namespace: db-ns 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: app01-pod
+  template:
+    metadata:
+      labels:
+        pod: app01-pod
+    spec:
+      containers:
+      - name: node
+        image: node:21-alpine
+        command: ['sh', '-c', "sleep 3600"]
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app01-svc
+  namespace: db-ns
+  labels:
+    app: store-app
+spec:
+  type: ClusterIP 
+  selector:
+    pod: app01-pod
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
