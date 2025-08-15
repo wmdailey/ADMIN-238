@@ -4,12 +4,20 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: db01-netpol
+  name: app01-netpol
   namespace: db-ns
 spec:
   podSelector:
     matchLabels:
-      tier: database
+      tier: frontend
   policyTypes:
     - Ingress
     - Egress
+  egress:
+    - to:
+      - podSelector:
+          matchLabels: 
+            tier: backend
+      ports:
+        - protocol: TCP
+          port: 80 

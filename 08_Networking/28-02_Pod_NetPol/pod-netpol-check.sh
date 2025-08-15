@@ -21,7 +21,7 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 # OR CONDITIONS OF ANY KIND, either express or implied.
 
-# Title: clean-ingress-controller.sh
+# Title: pod-netpol-check.sh
 # Author: WKD
 # Date: 17JUN25
 # Purpose: 
@@ -148,19 +148,19 @@ function port_check() {
   echo "Run Port check with netcat ..."
 
 	if kubectl -n $WEB_NS exec -it $WEB_POD -- nc -z -w $timeout $APP_IP $APP_PORT; then
-		echo "  Port check to app server succesful"
+		echo "  Port check to app server successful"
 	else
 		echo "  ERROR: Port check to $APP_POD failed or timed out"
 		return 1
         fi
 	if kubectl -n $APP_NS exec -it $APP_POD -- nc -z -w $timeout $DB_IP $DB_PORT; then
-		echo "  Port check to database server succesful"
+		echo "  Port check to database server successful"
 	else
 		echo "  ERROR: Port check to $DB_POD failed or timed out"
 		return 1
        fi
 	if kubectl -n $APP_NS exec -it $APP_POD -- nc -z -w $timeout $WEB_IP $WEB_PORT; then
-		echo "  Port check to web server succesful"
+		echo "  Port check to web server successful"
 	else
 		echo "  ERROR: Port check to $WEB_POD failed or timed out"
 
@@ -187,7 +187,7 @@ function check_command_status() {
    local exit_code=$?
 
    if [ ${exit_code} -eq 0 ]; then
-      echo "Command '$*' succeed."
+      echo "Command '$*' successful."
    else
       echo "ERROR: Command '$*' failed."
    fi
@@ -233,7 +233,6 @@ function run_option() {
                         port_check
                         ;;
 		-i | --install)
-			extract_pod_ip
 			install_package
 			;;
                 -t | --traffic)
