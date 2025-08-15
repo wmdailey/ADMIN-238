@@ -8,11 +8,10 @@ metadata:
   namespace: db-ns 
   labels:
     tier: frontend
-    app: store-app
 spec:
   containers:
-    - name: node
-      image: wmdailey/kube-backend 
+    - name: frontend
+      image: wmdailey/edu-backend 
       ports:
          - containerPort: 5000 
 ---
@@ -22,7 +21,7 @@ metadata:
   name: app01-svc
   namespace: db-ns
   labels:
-    app: store-app
+    tier: frontend
 spec:
   type: ClusterIP 
   selector:

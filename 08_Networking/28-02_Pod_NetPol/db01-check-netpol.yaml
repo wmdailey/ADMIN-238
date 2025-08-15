@@ -9,7 +9,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      pod: db01-pod
+      tier: database
   policyTypes:
     - Ingress
     - Egress
@@ -17,7 +17,7 @@ spec:
     - from:
       - podSelector:
           matchLabels:
-            pod: app01-pod
+            tier: backend
       ports:
         - protocol: TCP
           port: 6379

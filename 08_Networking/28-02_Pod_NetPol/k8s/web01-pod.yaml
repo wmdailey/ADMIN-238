@@ -8,7 +8,6 @@ metadata:
   namespace: db-ns
   labels:
     tier: backend
-    app: store-app
 spec:
   containers:
     - name: nginx
@@ -22,7 +21,7 @@ metadata:
   name: web01-svc
   namespace: db-ns
   labels:
-    app: store-app
+    tier: database
 spec:
   type: ClusterIP
   selector:

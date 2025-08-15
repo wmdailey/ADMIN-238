@@ -8,7 +8,6 @@ metadata:
   namespace: db-ns
   labels:
     tier: database
-    app: store-app
 spec:
   containers:
     - name: redis
@@ -22,7 +21,7 @@ metadata:
   name: db01-svc
   namespace: db-ns
   labels:
-    app: store-app
+    tier: database
 spec:
   type: ClusterIP 
   selector:

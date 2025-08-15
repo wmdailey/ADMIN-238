@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    file_path = '/etc/backend.conf'
+    file_path = '/var/log/backend.log'
     if os.path.exists(file_path):
         with open(file_path) as data:
             return data.read()

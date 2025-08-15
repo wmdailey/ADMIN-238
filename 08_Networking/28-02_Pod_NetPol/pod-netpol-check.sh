@@ -24,8 +24,7 @@
 # Title: clean-ingress-controller.sh
 # Author: WKD
 # Date: 17JUN25
-# Purpose: Clean out the ingress controller that was installed manually.
-# action menu option.
+# Purpose: 
 
 # DEBUG
 #set -x
@@ -39,7 +38,7 @@ NS=db-ns
 APP_POD=app01-pod
 APP_NS=db-ns
 APP_IP=0.0.0.0
-APP_PORT=8080
+APP_PORT=5000
 DB_POD=db01-pod
 DB_NS=db-ns
 DB_IP=0.0.0.0
@@ -172,7 +171,7 @@ function port_check() {
 function install_package() {
   echo "Installing packages..."
 
-  for pod in $APP_POD $DB_POD $WEB_POD; do
+  for pod in $APP_POD; do
   	if kubectl -n $NS exec -it $pod -- sh -c "apt update > /dev/null 2>&1; apt install -y netcat-openbsd > /dev/null 2>&1"; then
 		echo "  Install complete on $pod"
 	else
@@ -196,28 +195,28 @@ function check_command_status() {
 
 function traffic_check_from_app() {
   echo
-  echo "* Check traffic from APP to DATABASE"
+  echo "* Check traffic from FRONTEND to DATABASE"
   check_command_status kubectl -n $APP_NS exec $APP_POD -- sh -c "nc -w 1 $DB_IP $DB_PORT"
   echo
-  echo "* Check traffic from APP to WEB"
+  echo "* Check traffic from FRONTEND to BACKEND"
   check_command_status kubectl -n $APP_NS exec $APP_POD -- sh -c "nc -w 1 $WEB_IP $WEB_PORT"
 }
 
 function traffic_check_from_db() {
   echo
-  echo "* Check traffic from DATABASE to APP"
+  echo "* Check traffic from DATABASE to FRONTEND"
   check_command_status kubectl -n $DB_NS exec $DB_POD -- sh -c "nc -w 1 $APP_IP $APP_PORT"
   echo
-  echo "* Check traffic from DATABASE to WEB"
+  echo "* Check traffic from DATABASE to BACKEND"
   check_command_status kubectl -n $DB_NS exec $DB_POD -- sh -c "nc -w 1 $WEB_IP $WEB_PORT"
 }
 
 function traffic_check_from_web() {
   echo
-  echo "* Check traffic from WEB to APP"
+  echo "* Check traffic from BACKEND to FRONTEND"
   check_command_status kubectl -n $WEB_NS exec $WEB_POD -- sh -c "nc -w 1 $APP_IP $APP_PORT"
   echo
-  echo "* Check traffic from WEB to DATABASE"
+  echo "* Check traffic from BACKEND to DATABASE"
   check_command_status kubectl -n $WEB_NS exec $WEB_POD -- sh -c "nc -w 1 $DB_IP $DB_PORT"
 }
 

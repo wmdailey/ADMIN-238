@@ -17,7 +17,7 @@
           httpGet:
             path: /
             port: 5000
-          initialDelaySeconds: 3
-          periodSeconds: 2
+          initialDelaySeconds: 8
+          periodSeconds: 4
           failureThreshold: 4
 

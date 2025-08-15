@@ -9,14 +9,14 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      pod: app01-pod
+      tier: frontend
   policyTypes:
     - Ingress
   ingress:
     - from:
       - podSelector:
           matchLabels: 
-            pod: web01-pod 
+            tier: backend
       ports:
         - protocol: TCP
           port: 8080 
