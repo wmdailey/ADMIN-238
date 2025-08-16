@@ -1,13 +1,14 @@
-# Exercise 28-02 v1.2.0
+# Exercise 28-03 v1.2.0
 #
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web01-pod
-  namespace: db-ns
+  name: bak01-pod
+  namespace: default
   labels:
-    tier: backend
+    tier: backup
+    env: dev
 spec:
   containers:
     - name: nginx
@@ -18,14 +19,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web01-svc
-  namespace: db-ns
+  name: bak01-svc
+  namespace: default
   labels:
-    tier: backend
+    tier: backup
 spec:
   type: ClusterIP
   selector:
-    pod: web01-pod
+    pod: bak01-pod
   ports:
     - protocol: TCP
       port: 80

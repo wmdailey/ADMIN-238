@@ -8,6 +8,7 @@ metadata:
   namespace: prd-ns 
   labels:
     tier: frontend
+    env: prd
 spec:
   containers:
     - name: frontend

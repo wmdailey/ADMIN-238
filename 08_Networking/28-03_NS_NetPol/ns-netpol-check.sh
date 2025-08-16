@@ -21,7 +21,7 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 # OR CONDITIONS OF ANY KIND, either express or implied.
 
-# Title: pod-netpol-check.sh
+# Title: ns-netpol-check.sh
 # Author: WKD
 # Date: 17JUN25
 # Purpose: 
@@ -36,17 +36,25 @@ NUM_ARG=$#
 OPTION=$1
 NS=db-ns
 APP_POD=app01-pod
-APP_NS=db-ns
+APP_NS=prd-ns
 APP_IP=0.0.0.0
 APP_PORT=5000
+BAK_POD=bak01-pod
+BAK_NS=default
+BAK_IP=0.0.0.0
+BAK_PORT=80
 DB_POD=db01-pod
 DB_NS=db-ns
 DB_IP=0.0.0.0
 DB_PORT=6379
 WEB_POD=web01-pod
-WEB_NS=db-ns
+WEB_NS=prd-ns
 WEB_IP=0.0.0.0
 WEB_PORT=80
+W3B_POD=web01-pod
+W3B_NS=dev-ns
+W3B_IP=0.0.0.0
+W3B_PORT=80
 
 # FUNCTION
 
@@ -71,10 +79,10 @@ DESCRIPTION
                 Set IP address and check ports.
         -i, --install
 		Install netcat packages
-	-r, --run
-		run the application
         -t, --traffic
                 Test traffic between Pods 
+	-s, --setup
+		Set up application
 EOF
 	exit
 }
@@ -101,29 +109,40 @@ function extract_pod_ip() {
   	# Get the FRONTEND Pod's IP using kubectl and parse with awk
   	APP_IP=$(kubectl get pod "$APP_POD" -n "$APP_NS" -o wide 2>/dev/null | \
         awk 'NR>1 {print $6}')
-
   	if [[ -z "$APP_IP" ]]; then
-    		echo "  ERROR: Could not find IP Address for Pod '$APP_POD' in namespace '$APP_NS'. Check pod name and namespace." >&2
+    		echo "  ERROR: Could not find IP Address for FRONTEND Pod '$APP_POD' in namespace '$APP_NS'. Check pod name and namespace." >&2
     		return 1
   	fi
-
 
   	# Get the BACKEND Pod's IP using kubectl and parse with awk
   	WEB_IP=$(kubectl get pod "$WEB_POD" -n "$WEB_NS" -o wide 2>/dev/null | \
         awk 'NR>1 {print $6}')
-
   	if [[ -z "$WEB_IP" ]]; then
-    		echo "  ERROR: Could not find IP Address for Pod '$WEB_PORT' in namespace '$WEB_NS'. Check pod name and namespace." >&2
+    		echo "  ERROR: Could not find IP Address for BACKEND Pod '$WEB_PORT' in namespace '$WEB_NS'. Check pod name and namespace." >&2
     		return 1
 	fi
 
+  	# Get the BACKEND Pod's IP using kubectl and parse with awk
+  	W3B_IP=$(kubectl get pod "$W3B_POD" -n "$W3B_NS" -o wide 2>/dev/null | \
+        awk 'NR>1 {print $6}')
+  	if [[ -z "$W3B_IP" ]]; then
+    		echo "  ERROR: Could not find IP Address for BACKEND Pod '$W3B_PORT' in namespace '$W3B_NS'. Check pod name and namespace." >&2
+    		return 1
+	fi
 
   	# Get the DATABASE Pod's IP using kubectl and parse with awk
   	DB_IP=$(kubectl get pod "$DB_POD" -n "$DB_NS" -o wide 2>/dev/null | \
         awk 'NR>1 {print $6}')
-
   	if [[ -z "$DB_IP" ]]; then
-    		echo "  ERROR: Could not find IP Address for Pod '$DB_POD' in namespace '$DB_NS'. Check pod name and namespace." >&2
+    		echo "  ERROR: Could not find IP Address for DATABASE Pod '$DB_POD' in namespace '$DB_NS'. Check pod name and namespace." >&2
+    		return 1
+  	fi
+
+  	# Get the BACKUP Pod's IP using kubectl and parse with awk
+  	BAK_IP=$(kubectl get pod "$BAK_POD" -n "$BAK_NS" -o wide 2>/dev/null | \
+        awk 'NR>1 {print $6}')
+  	if [[ -z "$BAK_IP" ]]; then
+    		echo "  ERROR: Could not find IP Address for BACKUP Pod '$BAK_POD' in namespace '$BAK_NS'. Check pod name and namespace." >&2
     		return 1
   	fi
 }
@@ -133,13 +152,14 @@ function show_ip() {
 	echo "Run IP address check..."
   	echo "  FRONTEND $APP_POD in $APP_NS has IP address $APP_IP"
   	echo "  BACKEND $WEB_POD in $WEB_NS has IP address $WEB_IP"
+  	echo "  BACKEND $W3B_POD in $W3B_NS has IP address $W3B_IP"
   	echo "  DATABASE $DB_POD in $DB_NS has IP address $DB_IP"
+  	echo "  BACKUP $BAK_POD in $BAK_NS has IP address $BAK_IP"
 }
-
 function port_check() {
 	local timeout=2
 
-  echo "Run Port check with netcat ..."
+  echo "Run port check with netcat ..."
 
 	if kubectl -n $WEB_NS exec -it $WEB_POD -- nc -z -w $timeout $APP_IP $APP_PORT; then
 		echo "  Port check to FRONTEND $APP_POD in $APP_NS successful"
@@ -147,16 +167,32 @@ function port_check() {
 		echo "  ERROR: Port check to FRONTEND $APP_POD failed or timed out"
 		return 1
         fi
+
 	if kubectl -n $APP_NS exec -it $APP_POD -- nc -z -w $timeout $WEB_IP $WEB_PORT; then
 		echo "  Port check to BACKEND $WEB_POD in $WEB_NS successful"
 	else
 		echo "  ERROR: Port check to BACKEND $WEB_POD failed or timed out"
 		return 1
        fi
+
+	if kubectl -n $APP_NS exec -it $APP_POD -- nc -z -w $timeout $W3B_IP $W3B_PORT; then
+		echo "  Port check to BACKEND $W3B_POD in $W3B_NS successful"
+	else
+		echo "  ERROR: Port check to BACKEND $W3B_POD failed or timed out"
+		return 1
+       fi
+
 	if kubectl -n $APP_NS exec -it $APP_POD -- nc -z -w $timeout $DB_IP $DB_PORT; then
 		echo "  Port check to DATABASE $DB_POD in $DB_NS successful"
 	else
 		echo "  ERROR: Port check to DATABASE $DB_POD failed or timed out"
+		return 1
+       fi
+
+	if kubectl -n $APP_NS exec -it $APP_POD -- nc -z -w $timeout $BAK_IP $BAK_PORT; then
+		echo "  Port check to BACKUP $BAK_POD in $BAK_NS successful"
+	else
+		echo "  ERROR: Port check to BACKUP $BAK_POD failed or timed out"
 		return 1
        fi
 }
@@ -165,7 +201,7 @@ function install_package() {
   echo "Installing packages..."
 
   for pod in $APP_POD; do
-  	if kubectl -n $NS exec -it $pod -- sh -c "apt update > /dev/null 2>&1; apt install -y netcat-openbsd > /dev/null 2>&1"; then
+  	if kubectl -n $APP_NS exec -it $pod -- sh -c "apt update > /dev/null 2>&1; apt install -y netcat-openbsd > /dev/null 2>&1"; then
 		echo "  Install complete on $pod"
 	else
 		echo "  ERROR: Install failed on $pod"
@@ -193,6 +229,10 @@ function traffic_check_from_app() {
   echo
   echo "* Check traffic from FRONTEND to DATABASE"
   check_command_status kubectl -n $APP_NS exec $APP_POD -- sh -c "nc -w 1 $DB_IP $DB_PORT"
+
+  echo
+  echo "* Check traffic from FRONTEND to DEV BACKEND"
+  check_command_status kubectl -n $APP_NS exec $APP_POD -- sh -c "nc -w 1 $W3B_IP $W3B_PORT"
 }
 
 function traffic_check_from_web() {
@@ -204,6 +244,15 @@ function traffic_check_from_web() {
   check_command_status kubectl -n $WEB_NS exec $WEB_POD -- sh -c "nc -w 1 $DB_IP $DB_PORT"
 }
 
+function traffic_check_from_w3b() {
+  echo
+  echo "* Check traffic from DEV BACKEND to FRONTEND"
+  check_command_status kubectl -n $W3B_NS exec $W3B_POD -- sh -c "nc -w 1 $APP_IP $APP_PORT"
+  echo
+  echo "* Check traffic from DEV BACKEND to DATABASE"
+  check_command_status kubectl -n $W3B_NS exec $W3B_POD -- sh -c "nc -w 1 $DB_IP $DB_PORT"
+}
+
 function traffic_check_from_db() {
   echo
   echo "* Check traffic from DATABASE to FRONTEND"
@@ -211,6 +260,9 @@ function traffic_check_from_db() {
   echo
   echo "* Check traffic from DATABASE to BACKEND"
   check_command_status kubectl -n $DB_NS exec $DB_POD -- sh -c "nc -w 1 $WEB_IP $WEB_PORT"
+  echo
+  echo "* Check traffic from DATABASE to BACKUP"
+  check_command_status kubectl -n $DB_NS exec $DB_POD -- sh -c "nc -w 1 $BAK_IP $BAK_PORT"
 }
 
 function run_option() {
@@ -234,6 +286,7 @@ function run_option() {
 			extract_pod_ip
                         traffic_check_from_app
                         traffic_check_from_web
+                        traffic_check_from_w3b
                         traffic_check_from_db
                         ;;
 		-s | --setup)

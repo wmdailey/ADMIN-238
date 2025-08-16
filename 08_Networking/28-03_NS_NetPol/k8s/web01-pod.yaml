@@ -1,4 +1,4 @@
-# Exercise 28-02 v1.2.0
+# Exercise 28-03 v1.2.0
 #
 ---
 apiVersion: v1
@@ -8,6 +8,7 @@ metadata:
   namespace: dev-ns
   labels:
     tier: backend
+    env: dev
 spec:
   containers:
     - name: nginx
@@ -21,7 +22,7 @@ metadata:
   name: web01-svc
   namespace: dev-ns
   labels:
-    tier: database
+    tier: backend
 spec:
   type: ClusterIP
   selector:

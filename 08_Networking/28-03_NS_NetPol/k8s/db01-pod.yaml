@@ -1,4 +1,4 @@
-# Exercise 28-02 v1.2.0
+# Exercise 28-03 v1.2.0
 #
 ---
 apiVersion: v1
@@ -8,6 +8,7 @@ metadata:
   namespace: db-ns
   labels:
     tier: database
+    env: db
 spec:
   containers:
     - name: redis

@@ -36,9 +36,16 @@
 # VARIABLE
 
 # MAIN
-kubectl -n db-ns delete pods app01-pod db01-pod  web01-pod
-kubectl -n db-ns delete svc app01-svc web01-svc db01-svc
-kubectl -n db-ns delete netpol app01-netpol db01-netpol
-kubectl delete ns db-ns
+kubectl -n prd-ns delete pods app01-pod
+kubectl -n db-ns delete pods db01-pod
+kubectl -n dev-ns delete pods web01-pod
+kubectl -n default delete pods bak01-pod
+kubectl -n prd-ns delete svc app01-svc
+kubectl -n db-ns delete svc db01-svc
+kubectl -n dev-ns delete svc web01-svc 
+kubectl -n default delete svc bak01-svc
+kubectl -n prd-ns delete netpol app01-netpol
+kubectl -n db-ns delete netpol db01-netpol
+kubectl delete ns prd-ns db-ns dev-ns
 
 echo "Finished"
